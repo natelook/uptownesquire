@@ -23,5 +23,9 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.0"
+  },
+  "engines": {
+    "node": "11.2.0",
+    "npm": "6.6.0"
   }
 }
