@@ -12,6 +12,11 @@ const GlobalStyle = createGlobalStyle`
     font-size: 22px;
     line-height: 1.5em;
     position: relative;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+
   }
 `;
 

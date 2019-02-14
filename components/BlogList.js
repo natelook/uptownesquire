@@ -10,6 +10,10 @@ const Grid = styled.div`
   align-items: center;
   justify-content: center;
   grid-gap: 10px;
+
+  @media (max-width: 414px) {
+    grid-template-columns: 100%;
+  }
 `;
 
 const BlogItem = styled.div`

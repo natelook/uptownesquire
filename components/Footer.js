@@ -16,10 +16,18 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   padding-top: 30px;
+
+  @media (max-width: 414px) {
+    text-align: center;
+  }
 `;
 
 const List = styled.div`
   font-size: 20px;
+
+  @media (max-width: 414px) {
+    font-size: 14px;
+  }
   ul {
     list-style: none;
     padding: 0;
@@ -37,10 +45,20 @@ const List = styled.div`
 
   h3 {
     margin: 0 0 20px 0;
+
+    @media (max-width: 414px) {
+      font-size: 15px;
+    }
   }
 
   li {
     margin-bottom: 15px;
+  }
+`;
+
+const ListyList = styled.div`
+  @media (max-width: 414px) {
+    display: none;
   }
 `;
 
@@ -85,81 +103,97 @@ class Footer extends Component {
         <Container>
           <Grid>
             <List>
-              <h3>Sitemap</h3>
-              <ul>
-                <li>
-                  <Link href="/home">
-                    <a>Home</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/disclaimer">
-                    <a>Disclaimer</a>
-                  </Link>
-                </li>
-                <li>
-                  <a href="https://secure.lawpay.com/pages/dnlawpc/operating">
-                    Make a Payment
-                  </a>
-                </li>
-              </ul>
+              <div>
+                <h3>Sitemap</h3>
+                <ListyList>
+                  <ul>
+                    <li>
+                      <Link href="/home">
+                        <a>Home</a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/disclaimer">
+                        <a>Disclaimer</a>
+                      </Link>
+                    </li>
+                    <li>
+                      <a href="https://secure.lawpay.com/pages/dnlawpc/operating">
+                        Make a Payment
+                      </a>
+                    </li>
+                  </ul>
+                </ListyList>
+              </div>
             </List>
             <List>
-              <h3>Attorneys & Staff</h3>
-              <ul>
-                <li>
-                  <Link
-                    as="/attorneys/jaime-s-duggan"
-                    href="/attorney?slug=jaime-s-duggan">
-                    <a>Jaime S. Duggan</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    as="/attorneys/kourtney-l-parker"
-                    href="/attorney?slug=kourtney-l-parker">
-                    <a>Kourtney L. Parker</a>
-                  </Link>
-                </li>
+              <div>
+                <h3>Attorneys & Staff</h3>
+                <ListyList>
+                  <ul>
+                    <li>
+                      <Link
+                        as="/attorneys/jaime-s-duggan"
+                        href="/attorney?slug=jaime-s-duggan">
+                        <a>Jaime S. Duggan</a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        as="/attorneys/kourtney-l-parker"
+                        href="/attorney?slug=kourtney-l-parker">
+                        <a>Kourtney L. Parker</a>
+                      </Link>
+                    </li>
 
-                <li>
-                  <Link
-                    as="/attorneys/olivia-lindsey"
-                    href="/attorney?slug=olivia-lindsey">
-                    <a>Olivia Lindsey</a>
-                  </Link>
-                </li>
-              </ul>
+                    <li>
+                      <Link
+                        as="/attorneys/olivia-lindsey"
+                        href="/attorney?slug=olivia-lindsey">
+                        <a>Olivia Lindsey</a>
+                      </Link>
+                    </li>
+                  </ul>
+                </ListyList>
+              </div>
             </List>
             <List>
-              <h3>Practices</h3>
-              <ul>
-                <li>
-                  <Link href="/family-law">
-                    <a>Family Law</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="lgbtq-law">
-                    <a>LGBTQ Law</a>
-                  </Link>
-                </li>
-              </ul>
+              <div>
+                <h3>Practices</h3>
+                <ListyList>
+                  <ul>
+                    <li>
+                      <Link href="/family-law">
+                        <a>Family Law</a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="lgbtq-law">
+                        <a>LGBTQ Law</a>
+                      </Link>
+                    </li>
+                  </ul>
+                </ListyList>
+              </div>
             </List>
             <List>
-              <h3>Get in touch</h3>
-              <ul>
-                <li>
-                  <Link href="/contact">
-                    <a>Contact</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/blog">
-                    <a>Blog</a>
-                  </Link>
-                </li>
-              </ul>
+              <div>
+                <h3>Get in touch</h3>
+                <ListyList>
+                  <ul>
+                    <li>
+                      <Link href="/contact">
+                        <a>Contact</a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/blog">
+                        <a>Blog</a>
+                      </Link>
+                    </li>
+                  </ul>
+                </ListyList>
+              </div>
             </List>
           </Grid>
           <Grid>

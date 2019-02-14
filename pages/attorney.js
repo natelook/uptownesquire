@@ -22,11 +22,20 @@ const ContainerBackground = styled.div`
 
   p {
     font-size: 22px;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+      line-height: 30px;
+    }
   }
 
   li {
     font-size: 22px;
     margin-bottom: 5px;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
   }
 `;
 
@@ -41,6 +50,10 @@ const Images = styled.div`
   img {
     width: 150px;
     margin: 0 20px;
+
+    @media (max-width: 768px) {
+      width: 100px;
+    }
   }
 `;
 
@@ -67,6 +80,10 @@ const AttorneyImage = styled.div`
   background-position: center;
   margin: 0 auto;
   border: 4px solid #000;
+  @media (max-width: 768px) {
+    height: 400px;
+    width: 200px;
+  }
 `;
 
 const stateBar = '/static/images/state-bar-of-texas.png';

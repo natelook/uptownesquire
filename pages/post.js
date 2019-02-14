@@ -21,6 +21,10 @@ const ContainerBackground = styled.div`
   grid-template-columns: 65% 35%;
   grid-gap: 20px;
   position: relative;
+
+  @media (max-width: 414px) {
+    grid-template-columns: 100%;
+  }
 `;
 
 const SideBar = styled.div`

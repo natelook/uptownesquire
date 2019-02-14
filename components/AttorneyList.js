@@ -12,6 +12,15 @@ const List = styled.div`
   grid-template-columns: 33% 33% 33%;
   padding: 0 25px;
   justify-content: center;
+
+  @media (max-width: 1024px) {
+    padding: 0;
+  }
+
+  @media (max-width: 414px) {
+    grid-template-columns: 100%;
+    grid-gap: 10px;
+  }
 `;
 
 const Container = styled.div`

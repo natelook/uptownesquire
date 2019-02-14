@@ -10,6 +10,16 @@ const Card = styled.div`
   border: 4px solid #000;
   position: relative;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 400px;
+  }
+
+  @media (max-width: 414px) {
+    width: 300px;
+    height: 400px;
+  }
 `;
 
 const Name = styled.div`

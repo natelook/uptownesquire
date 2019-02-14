@@ -12,8 +12,11 @@ const Btn = styled.button`
   color: ${props => props.textColor};
   margin-top: ${props => props.marginTop};
   cursor: pointer;
-
   outline: none;
+  @media (max-width: 414px) {
+    font-size: 14px;
+    margin-top: 10px;
+  }
 `;
 
 const Button = props => (

@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Container } from '../components/styles/Tools';
@@ -16,7 +17,7 @@ const lgbtq = '/static/images/flag.jpg';
 const dallas = '/static/images/dallas.jpg';
 
 const HomeContainer = styled.div`
-  height: calc(100vh) !important;
+  height: 100vh;
   position: relative;
 `;
 
@@ -33,9 +34,27 @@ const Heading = styled.div`
   position: relative;
   z-index: -2;
 
+  @media (max-width: 768px) {
+    height: 50vh;
+  }
+
   h1 {
-    font-size: 60px;
+    font-size: 50px;
     line-height: 1.25em;
+    @media (max-width: 768px) {
+      font-size: 35px;
+    }
+    @media (max-height: 768px) {
+      font-size: 35px;
+      margin-top: 70px;
+    }
+
+    @media (max-width: 414px) {
+      font-size: 18px;
+    }
+  }
+  @media (max-width: 414px) and (max-height: 736px) {
+    height: 368px;
   }
 `;
 
@@ -54,6 +73,17 @@ const Grid = styled.div`
   display: grid;
   bottom: 0;
   grid-template-columns: 50% 50%;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 100%;
+  }
+
+  @media (max-width: 768px) {
+    height: 50vh;
+  }
+
+  @media (max-width: 414px) and (max-height: 736px) {
+    height: 368px;
+  }
 `;
 
 const Practice = styled.div`
@@ -69,12 +99,31 @@ const Practice = styled.div`
   position: relative;
   z-index: 1;
 
+  @media (max-width: 1024px) {
+    padding: 20px;
+  }
+  @media (max-width: 414px) and (max-height: 736px) {
+    height: 144px;
+  }
+
   h2 {
     margin: 0 0 20px;
     padding: 0;
     font-size: 40px;
     position: relative;
     z-index: 3;
+    @media (max-height: 768px) {
+      font-size: 30px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 35px;
+    }
+
+    @media (max-width: 414px) {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
   }
 
   p {
@@ -83,6 +132,19 @@ const Practice = styled.div`
     line-height: 40px;
     position: relative;
     z-index: 3;
+    @media (max-height: 768px) {
+      font-size: 20px;
+      line-height: 30px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+      line-height: 30px;
+    }
+
+    @media (max-width: 414px) {
+      font-size: 18px;
+    }
   }
 
   a {
@@ -111,12 +173,29 @@ const AboutContainer = styled.div`
     padding-top: 50px;
     font-size: 60px;
     color: ${DarkBlue};
+    @media (max-height: 768px) {
+      font-size: 40px;
+    }
+
+    @media (max-width: 768px) {
+      padding-top: 30px;
+    }
   }
 
   p {
     font-size: 25px;
     line-height: 35px;
     margin-bottom: 25px;
+
+    @media (max-height: 768px) {
+      font-size: 20px;
+      line-height: 30px;
+    }
+
+    @media (max-width: 414px) {
+      font-size: 17px;
+      line-height: 25px;
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -129,6 +208,14 @@ const AboutBackground = styled.div`
   padding: 0 80px;
   position: relative;
   z-index: 3;
+
+  @media (max-width: 768px) {
+    padding: 30px;
+  }
+
+  @media (max-width: 414px) {
+    padding: 10px;
+  }
 
   a {
     position: relative;
@@ -146,142 +233,157 @@ const AboutOverlay = styled.div`
   left: 0;
 `;
 
-const Home = props => (
-  <Layout page={props.page}>
-    <HomeContainer>
-      <Heading>
-        <Container>
-          <h1>
-            One block at a time,
-            <br /> we work with you to build a{' '}
-            <span style={{ color: LightBlue }}>legal strategy</span>
-            <br />
-            rooted in protecting what is most important
-            <br /> to you and your family.
-          </h1>
-          <Overlay />
-        </Container>
-      </Heading>
-      <Grid>
-        <Practice image={family}>
-          <div>
-            <h2>Family Law</h2>
-            <p>We work to guide your family through this process.</p>
-            <Link href="family-law">
-              <a>
-                <Button textColor="#fff" marginTop="20px" element={'a'}>
-                  Learn More
-                </Button>
-              </a>
-            </Link>
-          </div>
-          <GridOverlay overlayColor={'rgba(0,52,88,.50)'} />
-        </Practice>
-        <Practice image={lgbtq}>
-          <div>
-            <h2>LGBTQ Law</h2>
-            <p>
-              We recognize the specific legal concerns of the LGBTQ community.
-            </p>
-            <Link href="/lgbtq-law">
-              <a>
-                <Button textColor="#fff" marginTop="20px" element={'a'}>
-                  Learn More
-                </Button>
-              </a>
-            </Link>
-          </div>
-          <GridOverlay overlayColor={'rgba(8,92,142,.50)'} />
-        </Practice>
-      </Grid>
-    </HomeContainer>
-    <AboutContainer>
-      <Container>
-        <AboutBackground>
-          <h2>About Us</h2>
-          <p>
-            Duggan Law Firm, PC is a boutique law firm that actively serves
-            Collin, Dallas, Denton, and Tarrant counties, and provides impactful
-            legal representation and advice to clients facing a range of legal
-            concerns including family law and LGBTQ specific issues. Our method
-            of representing clients is to aggressively advocate for each client,
-            actively taking into account each client’s specific desired outcome
-            and approach to each case. When you need an attorney, you want an
-            attorney who understands the sensitive nature of the issues while
-            advocating on your behalf.
-          </p>
-          <p style={{ fontWeight: 700 }}>
-            One block at a time, we work with you to build a legal strategy
-            rooted in protecting what is most important to you and your family.
-          </p>
-          <p>
-            At Duggan Law Firm, PC, we continually strive to get to know our
-            clients on a personal level and to understand their unique
-            situation. We take care and consideration when dealing with the
-            emotional aspects involved in divorce, child custody, property
-            division, adoptions and other important issues that affect your
-            family.
-          </p>
-          <p>
-            <Link href="/family-law">
-              <a
+class Home extends Component {
+  state = {
+    isVisible: false,
+  };
+
+  componentDidMount() {
+    this.setState({ isVisible: true });
+  }
+  render() {
+    return (
+      <Layout page={this.props.page}>
+        <HomeContainer>
+          <Heading>
+            <Container>
+              <h1>
+                One block at a time,
+                <br /> we work with you to build a{' '}
+                <span style={{ color: LightBlue }}>legal strategy</span>
+                <br />
+                rooted in protecting what is most important
+                <br /> to you and your family.
+              </h1>
+              <Overlay />
+            </Container>
+          </Heading>
+          <Grid>
+            <Practice image={family}>
+              <div>
+                <h2>Family Law</h2>
+                <p>We work to guide your family through this process.</p>
+                <Link href="family-law">
+                  <a>
+                    <Button textColor="#fff" marginTop="20px" element={'a'}>
+                      Learn More
+                    </Button>
+                  </a>
+                </Link>
+              </div>
+              <GridOverlay overlayColor={'rgba(0,52,88,.50)'} />
+            </Practice>
+            <Practice image={lgbtq}>
+              <div>
+                <h2>LGBTQ Law</h2>
+                <p>
+                  We recognize the specific legal concerns of the LGBTQ
+                  community.
+                </p>
+                <Link href="/lgbtq-law">
+                  <a>
+                    <Button textColor="#fff" marginTop="20px" element={'a'}>
+                      Learn More
+                    </Button>
+                  </a>
+                </Link>
+              </div>
+              <GridOverlay overlayColor={'rgba(8,92,142,.50)'} />
+            </Practice>
+          </Grid>
+        </HomeContainer>
+        <AboutContainer>
+          <Container>
+            <AboutBackground>
+              <h2>About Us</h2>
+              <p>
+                Duggan Law Firm, PC is a boutique law firm that actively serves
+                Collin, Dallas, Denton, and Tarrant counties, and provides
+                impactful legal representation and advice to clients facing a
+                range of legal concerns including family law and LGBTQ specific
+                issues. Our method of representing clients is to aggressively
+                advocate for each client, actively taking into account each
+                client’s specific desired outcome and approach to each case.
+                When you need an attorney, you want an attorney who understands
+                the sensitive nature of the issues while advocating on your
+                behalf.
+              </p>
+              <p style={{ fontWeight: 700 }}>
+                One block at a time, we work with you to build a legal strategy
+                rooted in protecting what is most important to you and your
+                family.
+              </p>
+              <p>
+                At Duggan Law Firm, PC, we continually strive to get to know our
+                clients on a personal level and to understand their unique
+                situation. We take care and consideration when dealing with the
+                emotional aspects involved in divorce, child custody, property
+                division, adoptions and other important issues that affect your
+                family.
+              </p>
+              <p>
+                <Link href="/family-law">
+                  <a
+                    style={{
+                      color: MedBlue,
+                      textDecoration: 'none',
+                      fontWeight: 700,
+                    }}>
+                    Family law
+                  </a>
+                </Link>{' '}
+                matters are not only emotionally draining but can also be
+                financially demanding as well. Our goal is to achieve your
+                objectives efficiently and effectively. We are dedicated to
+                moving your case forward and resolving your case with the least
+                amount of stress possible. We take an interest in you, your
+                family and your future.
+              </p>
+              <p>
+                We invite you to{' '}
+                <Link href="/contact">
+                  <a
+                    style={{
+                      color: MedBlue,
+                      textDecoration: 'none',
+                      fontWeight: 700,
+                    }}>
+                    contact
+                  </a>
+                </Link>{' '}
+                our firm and discuss your family law or divorce issue. We can
+                help you bring your family law matter to a resolution, and you
+                can have confidence that your interests will be protected, and
+                your goals and objectives will be given the highest priority.
+              </p>
+              <p>
+                It is vital that you protect your interests and consult an
+                attorney about your case as soon as you find yourself facing
+                legal challenges. The stakes are high, and we know nothing is
+                more important than your family and your future. Let the
+                successful team at Duggan Law Firm, PC work to build up your
+                future, block by block.
+              </p>
+              <div
                 style={{
-                  color: MedBlue,
-                  textDecoration: 'none',
-                  fontWeight: 700,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  paddingTop: '50px',
+                  paddingBottom: '50px',
                 }}>
-                Family law
-              </a>
-            </Link>{' '}
-            matters are not only emotionally draining but can also be
-            financially demanding as well. Our goal is to achieve your
-            objectives efficiently and effectively. We are dedicated to moving
-            your case forward and resolving your case with the least amount of
-            stress possible. We take an interest in you, your family and your
-            future.
-          </p>
-          <p>
-            We invite you to{' '}
-            <Link href="/contact">
-              <a
-                style={{
-                  color: MedBlue,
-                  textDecoration: 'none',
-                  fontWeight: 700,
-                }}>
-                contact
-              </a>
-            </Link>{' '}
-            our firm and discuss your family law or divorce issue. We can help
-            you bring your family law matter to a resolution, and you can have
-            confidence that your interests will be protected, and your goals and
-            objectives will be given the highest priority.
-          </p>
-          <p>
-            It is vital that you protect your interests and consult an attorney
-            about your case as soon as you find yourself facing legal
-            challenges. The stakes are high, and we know nothing is more
-            important than your family and your future. Let the successful team
-            at Duggan Law Firm, PC work to build up your future, block by block.
-          </p>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              paddingTop: '50px',
-              paddingBottom: '50px',
-            }}>
-            <Link href="/attorneys">
-              <a>
-                <Button textColor={Blue}>Meet Our Attorneys</Button>
-              </a>
-            </Link>
-          </div>
-        </AboutBackground>
-      </Container>
-      <AboutOverlay />
-    </AboutContainer>
-  </Layout>
-);
+                <Link href="/attorneys">
+                  <a>
+                    <Button textColor={Blue}>Meet Our Attorneys</Button>
+                  </a>
+                </Link>
+              </div>
+            </AboutBackground>
+          </Container>
+          <AboutOverlay />
+        </AboutContainer>
+      </Layout>
+    );
+  }
+}
 
 export default Home;

@@ -21,6 +21,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
+          <meta name="viewport" content="width=device-width" />
           <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
           <link
             rel="apple-touch-icon"

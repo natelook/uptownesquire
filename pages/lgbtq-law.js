@@ -12,14 +12,28 @@ const ContainerBackground = styled.div`
   background-color: #fff;
   padding: 20px 40px;
 
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+
   h1 {
     color: ${Blue};
+  }
+
+  h2 {
+    @media (max-width: 768px) {
+      font-size: 25px;
+    }
   }
 `;
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 65% 35%;
+
+  /* @media (max-width: 414px) {
+    grid-template-columns:
+  } */
 `;
 
 const PracticeType = styled.div``;
@@ -29,7 +43,12 @@ const Heading = styled.div`
   grid-column-end: 3;
 `;
 
-const OpenPractice = styled.div``;
+const OpenPractice = styled.div`
+  @media (max-width: 414px) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+`;
 
 const PracticeList = styled.div`
   margin-left: 30px;
@@ -42,6 +61,17 @@ const PracticeList = styled.div`
     list-style: none;
     padding: 0;
   }
+
+  @media (max-width: 768px) {
+    padding: 0 5px;
+  }
+
+  @media (max-width: 414px) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: left;
+    margin-left: 0;
+  }
 `;
 
 const PracticeItem = styled.li`
@@ -50,6 +80,16 @@ const PracticeItem = styled.li`
   font-weight: 500;
   cursor: pointer;
   color: ${props => (props.selected ? MedBlue : '#000')};
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+`;
+
+const PracticeUl = styled.ul`
+  @media (max-width: 414px) {
+  }
 `;
 
 const Transgender =
@@ -102,7 +142,7 @@ class LgbtqLaw extends Component {
                 <PracticeList>
                   <div>
                     <h2>Explore More</h2>
-                    <ul>
+                    <PracticeUl>
                       <PracticeItem
                         onClick={() =>
                           this.selectPractice(
@@ -154,7 +194,7 @@ class LgbtqLaw extends Component {
                         }>
                         Non-biological Parental Rights
                       </PracticeItem>
-                    </ul>
+                    </PracticeUl>
                   </div>
                 </PracticeList>
               </Grid>
