@@ -37,6 +37,10 @@ const ContainerBackground = styled.div`
       font-size: 18px;
     }
   }
+
+  @media (max-width: 414px) {
+    grid-template-columns: 100%;
+  }
 `;
 
 const Images = styled.div`
@@ -46,6 +50,10 @@ const Images = styled.div`
   align-items: center;
   grid-column-start: 1;
   grid-column-end: 3;
+
+  @media (max-width: 414px) {
+    display: block;
+  }
 
   img {
     width: 150px;
@@ -70,6 +78,12 @@ const ImageContainer = styled.div`
   }
 `;
 
+const AttorneyDescription = styled.div`
+  @media (max-width: 414px) {
+    grid-column-start: 1;
+  }
+`;
+
 const AttorneyImage = styled.div`
   margin-top: 30px;
   display: block;
@@ -83,6 +97,10 @@ const AttorneyImage = styled.div`
   @media (max-width: 768px) {
     height: 400px;
     width: 200px;
+  }
+
+  @media (max-width: 414px) {
+    width: 300px;
   }
 `;
 
@@ -124,7 +142,7 @@ class Attorney extends Component {
                   <a href="tel:2144941647">214-494-1647</a>
                 </p>
               </ImageContainer>
-              <div>
+              <AttorneyDescription>
                 <h1>{attorneyProps[0].title.rendered}</h1>
                 <div
                   className="attorney-text"
@@ -132,7 +150,7 @@ class Attorney extends Component {
                     __html: attorneyProps[0].content.rendered,
                   }}
                 />
-              </div>
+              </AttorneyDescription>
               {attorneyProps[0].slug === 'jaime-s-duggan' ? (
                 <Images>
                   <img src={dbs} />

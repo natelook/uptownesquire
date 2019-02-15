@@ -126,13 +126,6 @@ class FamilyLaw extends Component {
               <Grid>
                 <Heading>
                   <h1>Family Law</h1>
-                  <p>
-                    Ea elit labore minim do fugiat eiusmod. Quis cillum
-                    excepteur cupidatat irure occaecat culpa commodo esse
-                    commodo sunt aliquip consequat Lorem. Ut dolor deserunt do
-                    anim commodo pariatur consequat dolor voluptate eu fugiat
-                    qui et.
-                  </p>
                 </Heading>
                 <OpenPractice>
                   <h2>{title}</h2>
