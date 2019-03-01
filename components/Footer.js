@@ -108,7 +108,7 @@ class Footer extends Component {
                 <ListyList>
                   <ul>
                     <li>
-                      <Link href="/home">
+                      <Link href="/">
                         <a>Home</a>
                       </Link>
                     </li>
@@ -209,7 +209,7 @@ class Footer extends Component {
                     <Bold>Phone: </Bold>214-494-1647
                   </li>
                   <li>
-                    <Bold>Fax: </Bold>214-540-8284
+                    <Bold>Fax: </Bold>214-731-7068
                   </li>
                   <li>
                     <Bold>Email: </Bold>

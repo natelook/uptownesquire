@@ -2,6 +2,8 @@ import React from 'react';
 import App, { Container } from 'next/app';
 import NProgress from 'nprogress';
 import Router from 'next/router';
+import { Transition } from 'react-spring';
+import Layout from '../components/Layout';
 
 Router.events.on('routeChangeStart', url => {
   console.log(`Loading: ${url}`);
@@ -26,7 +28,9 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <Container>
-        <Component {...pageProps} page={this.props.router.asPath} />
+        <Layout page={this.props.router.asPath}>
+          <Component {...pageProps} page={this.props.router.asPath} />
+        </Layout>
       </Container>
     );
   }

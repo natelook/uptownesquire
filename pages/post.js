@@ -44,28 +44,26 @@ class Post extends Component {
   render() {
     const { postProps } = this.props;
     return (
-      <Layout>
-        <Background style={{ paddingTop: '87.328px' }}>
-          <Container>
-            <ContainerBackground>
+      <Background style={{ paddingTop: '75.328px' }}>
+        <Container>
+          <ContainerBackground>
+            <div>
+              <h2>{postProps[0].title.rendered}</h2>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: postProps[0].content.rendered,
+                }}
+              />
+            </div>
+            <SideBar>
               <div>
-                <h2>{postProps[0].title.rendered}</h2>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: postProps[0].content.rendered,
-                  }}
-                />
+                <h2>Read more</h2>
+                <BlogListText />
               </div>
-              <SideBar>
-                <div>
-                  <h2>Read more</h2>
-                  <BlogListText />
-                </div>
-              </SideBar>
-            </ContainerBackground>
-          </Container>
-        </Background>
-      </Layout>
+            </SideBar>
+          </ContainerBackground>
+        </Container>
+      </Background>
     );
   }
 }

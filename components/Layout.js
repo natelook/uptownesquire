@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 1.5em;
     position: relative;
 

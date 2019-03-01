@@ -23,6 +23,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta name="viewport" content="width=device-width" />
           <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
+          <link rel="stylesheet" type="text/css" href="/static/animate.css" />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -48,6 +49,10 @@ export default class MyDocument extends Document {
           />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Assistant:300"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
+import ScrollAnimation from 'react-animate-on-scroll';
 import { Container } from '../components/styles/Tools';
 import Layout from '../components/Layout';
 import { Config } from '../config';
@@ -75,6 +76,7 @@ const ImageContainer = styled.div`
 
   a {
     color: ${Blue};
+    text-decoration: none;
   }
 `;
 
@@ -87,13 +89,14 @@ const AttorneyDescription = styled.div`
 const AttorneyImage = styled.div`
   margin-top: 30px;
   display: block;
-  height: 500px;
+  height: 350px;
   width: 300px;
   background-image: url(${props => props.image});
   background-size: cover;
   background-position: center;
   margin: 0 auto;
-  border: 4px solid #000;
+  border: 2px solid #000;
+  border-radius: 10px;
   @media (max-width: 768px) {
     height: 400px;
     width: 200px;
@@ -124,46 +127,45 @@ class Attorney extends Component {
   render() {
     const { attorneyProps } = this.props;
     return (
-      <Layout>
-        <Background style={{ paddingTop: '87.328px' }}>
-          <Container>
-            <ContainerBackground>
-              <ImageContainer>
-                <AttorneyImage
-                  image={
-                    attorneyProps[0].featured_media != 0
-                      ? attorneyProps[0].better_featured_image.media_details
-                          .sizes.large.source_url
-                      : vertLogo
-                  }
-                />
-                <p>Contact {attorneyProps[0].title.rendered.split(' ')[0]}</p>
-                <p>
-                  <a href="tel:2144941647">214-494-1647</a>
-                </p>
-              </ImageContainer>
-              <AttorneyDescription>
-                <h1>{attorneyProps[0].title.rendered}</h1>
-                <div
-                  className="attorney-text"
-                  dangerouslySetInnerHTML={{
-                    __html: attorneyProps[0].content.rendered,
-                  }}
-                />
-              </AttorneyDescription>
-              {attorneyProps[0].slug === 'jaime-s-duggan' ? (
-                <Images>
-                  <img src={dbs} />
-                  <img src={stateBar} />
-                  <img src={lgbtChamber} />
-                  <img src={superLawyer} />
-                  <img src={tarrant} />
-                </Images>
-              ) : null}
-            </ContainerBackground>
-          </Container>
-        </Background>
-      </Layout>
+      <Background style={{ paddingTop: '75.328px' }}>
+        <Container>
+          <ContainerBackground>
+            <ImageContainer>
+              <AttorneyImage
+                image={
+                  attorneyProps[0].acf.attorney_image
+                    ? attorneyProps[0].acf.attorney_image.url
+                    : vertLogo
+                }
+              />
+              <p>Contact {attorneyProps[0].title.rendered.split(' ')[0]}</p>
+              <p>
+                <a href={`mailto:${attorneyProps[0].acf.email}`}>
+                  {attorneyProps[0].acf.email}
+                </a>
+              </p>
+            </ImageContainer>
+            <AttorneyDescription>
+              <h1>{attorneyProps[0].title.rendered}</h1>
+              <div
+                className="attorney-text"
+                dangerouslySetInnerHTML={{
+                  __html: attorneyProps[0].content.rendered,
+                }}
+              />
+            </AttorneyDescription>
+            {attorneyProps[0].slug === 'jaime-s-duggan' ? (
+              <Images>
+                <img src={dbs} />
+                <img src={stateBar} />
+                <img src={lgbtChamber} />
+                <img src={superLawyer} />
+                <img src={tarrant} />
+              </Images>
+            ) : null}
+          </ContainerBackground>
+        </Container>
+      </Background>
     );
   }
 }

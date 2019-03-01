@@ -4,6 +4,7 @@ import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
 import AttorneyBox from './AttorneyBox';
 import { Config } from '../config';
+import LoadingRing from './LoadingRing';
 
 const vertLogo = '/static/images/vertLogo.svg';
 
@@ -23,15 +24,10 @@ const List = styled.div`
   }
 `;
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 class AttorneyList extends Component {
   state = {
     attorneys: [],
+    loading: true,
   };
 
   async componentWillMount() {
@@ -39,31 +35,37 @@ class AttorneyList extends Component {
     const attorneys = await res.json();
     this.setState({
       attorneys,
+      loading: false,
     });
   }
   render() {
-    const { attorneys } = this.state;
+    const { attorneys, loading } = this.state;
     return (
-      <List>
-        {attorneys.reverse().map(attorney => (
-          <Link
-            as={`/attorney/${attorney.slug}`}
-            href={`/attorney?slug=${attorney.slug}&apiRoute=attorneys`}
-            key={attorney.id}>
-            <a>
-              <AttorneyBox
-                name={attorney.title.rendered}
-                image={
-                  attorney.featured_media != 0
-                    ? attorney.better_featured_image.media_details.sizes.large
-                        .source_url
-                    : vertLogo
-                }
-              />
-            </a>
-          </Link>
-        ))}
-      </List>
+      <div>
+        {loading ? (
+          <LoadingRing />
+        ) : (
+          <List>
+            {attorneys.reverse().map(attorney => (
+              <Link
+                as={`/attorney/${attorney.slug}`}
+                href={`/attorney?slug=${attorney.slug}&apiRoute=attorneys`}
+                key={attorney.id}>
+                <a>
+                  <AttorneyBox
+                    name={attorney.title.rendered}
+                    image={
+                      attorney.featured_media
+                        ? attorney.acf.attorney_image.url
+                        : vertLogo
+                    }
+                  />
+                </a>
+              </Link>
+            ))}
+          </List>
+        )}
+      </div>
     );
   }
 }

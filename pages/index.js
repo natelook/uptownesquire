@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { Spring } from 'react-spring';
+import ScrollAnimation from 'react-animate-on-scroll';
+import InViewMonitor from 'react-inview-monitor';
 import { Container } from '../components/styles/Tools';
 import {
   LightBlue,
@@ -15,6 +18,7 @@ const signing = '/static/images/header2.jpeg';
 const family = '/static/images/family.jpeg';
 const lgbtq = '/static/images/flag.jpg';
 const dallas = '/static/images/dallas.jpg';
+const hands = '/static/images/hands.jpeg';
 
 const HomeContainer = styled.div`
   height: 100vh;
@@ -33,6 +37,7 @@ const Heading = styled.div`
   background-position: center bottom;
   position: relative;
   z-index: -2;
+  font-family: 'Assistant';
 
   @media (max-width: 768px) {
     height: 50vh;
@@ -112,6 +117,7 @@ const Practice = styled.div`
     font-size: 40px;
     position: relative;
     z-index: 3;
+    font-weight: 500;
     @media (max-height: 768px) {
       font-size: 30px;
     }
@@ -171,7 +177,7 @@ const AboutContainer = styled.div`
   h2 {
     margin: 0;
     padding-top: 50px;
-    font-size: 60px;
+    font-size: 50px;
     color: ${DarkBlue};
     @media (max-height: 768px) {
       font-size: 40px;
@@ -183,7 +189,7 @@ const AboutContainer = styled.div`
   }
 
   p {
-    font-size: 25px;
+    font-size: 20px;
     line-height: 35px;
     margin-bottom: 25px;
 
@@ -208,6 +214,7 @@ const AboutBackground = styled.div`
   padding: 0 80px;
   position: relative;
   z-index: 3;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     padding: 30px;
@@ -243,24 +250,21 @@ class Home extends Component {
   }
   render() {
     return (
-      <Layout page={this.props.page}>
+      <div>
         <HomeContainer>
           <Heading>
             <Container>
-              <h1>
-                One block at a time,
-                <br /> we work with you to build a{' '}
+              <h1 className="animated fadeIn">
+                One block at a time, we build a{' '}
                 <span style={{ color: LightBlue }}>legal strategy</span>
-                <br />
-                rooted in protecting what is most important
-                <br /> to you and your family.
+                <br /> rooted in protecting you and your family.
               </h1>
               <Overlay />
             </Container>
           </Heading>
           <Grid>
             <Practice image={family}>
-              <div>
+              <div className="animated fadeInLeft" style={{ zIndex: 20 }}>
                 <h2>Family Law</h2>
                 <p>We work to guide your family through this process.</p>
                 <Link href="family-law">
@@ -273,8 +277,8 @@ class Home extends Component {
               </div>
               <GridOverlay overlayColor={'rgba(0,52,88,.50)'} />
             </Practice>
-            <Practice image={lgbtq}>
-              <div>
+            <Practice image={hands}>
+              <div className="animated fadeInRight" style={{ zIndex: 20 }}>
                 <h2>LGBTQ Law</h2>
                 <p>
                   We recognize the specific legal concerns of the LGBTQ
@@ -295,93 +299,97 @@ class Home extends Component {
         <AboutContainer>
           <Container>
             <AboutBackground>
-              <h2>About Us</h2>
-              <p>
-                Duggan Law Firm, PC is a boutique law firm that actively serves
-                Collin, Dallas, Denton, and Tarrant counties, and provides
-                impactful legal representation and advice to clients facing a
-                range of legal concerns including family law and LGBTQ specific
-                issues. Our method of representing clients is to aggressively
-                advocate for each client, actively taking into account each
-                client’s specific desired outcome and approach to each case.
-                When you need an attorney, you want an attorney who understands
-                the sensitive nature of the issues while advocating on your
-                behalf.
-              </p>
-              <p style={{ fontWeight: 700 }}>
-                One block at a time, we work with you to build a legal strategy
-                rooted in protecting what is most important to you and your
-                family.
-              </p>
-              <p>
-                At Duggan Law Firm, PC, we continually strive to get to know our
-                clients on a personal level and to understand their unique
-                situation. We take care and consideration when dealing with the
-                emotional aspects involved in divorce, child custody, property
-                division, adoptions and other important issues that affect your
-                family.
-              </p>
-              <p>
-                <Link href="/family-law">
-                  <a
-                    style={{
-                      color: MedBlue,
-                      textDecoration: 'none',
-                      fontWeight: 700,
-                    }}>
-                    Family law
-                  </a>
-                </Link>{' '}
-                matters are not only emotionally draining but can also be
-                financially demanding as well. Our goal is to achieve your
-                objectives efficiently and effectively. We are dedicated to
-                moving your case forward and resolving your case with the least
-                amount of stress possible. We take an interest in you, your
-                family and your future.
-              </p>
-              <p>
-                We invite you to{' '}
-                <Link href="/contact">
-                  <a
-                    style={{
-                      color: MedBlue,
-                      textDecoration: 'none',
-                      fontWeight: 700,
-                    }}>
-                    contact
-                  </a>
-                </Link>{' '}
-                our firm and discuss your family law or divorce issue. We can
-                help you bring your family law matter to a resolution, and you
-                can have confidence that your interests will be protected, and
-                your goals and objectives will be given the highest priority.
-              </p>
-              <p>
-                It is vital that you protect your interests and consult an
-                attorney about your case as soon as you find yourself facing
-                legal challenges. The stakes are high, and we know nothing is
-                more important than your family and your future. Let the
-                successful team at Duggan Law Firm, PC work to build up your
-                future, block by block.
-              </p>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  paddingTop: '50px',
-                  paddingBottom: '50px',
-                }}>
-                <Link href="/attorneys">
-                  <a>
-                    <Button textColor={Blue}>Meet Our Attorneys</Button>
-                  </a>
-                </Link>
-              </div>
+              <InViewMonitor
+                classNameNotInView="vis-hidden"
+                classNameInView="animated fadeInLeft">
+                <h2>About Us</h2>
+                <p>
+                  Duggan Law Firm, PC is a boutique law firm that actively
+                  serves Collin, Dallas, Denton, and Tarrant counties, and
+                  provides impactful legal representation and advice to clients
+                  facing a range of legal concerns including family law and
+                  LGBTQ specific issues. Our method of representing clients is
+                  to aggressively advocate for each client, actively taking into
+                  account each client’s specific desired outcome and approach to
+                  each case. When you need an attorney, you want an attorney who
+                  understands the sensitive nature of the issues while
+                  advocating on your behalf.
+                </p>
+                <p style={{ fontWeight: 700 }}>
+                  One block at a time, we work with you to build a legal
+                  strategy rooted in protecting what is most important to you
+                  and your family.
+                </p>
+                <p>
+                  At Duggan Law Firm, PC, we continually strive to get to know
+                  our clients on a personal level and to understand their unique
+                  situation. We take care and consideration when dealing with
+                  the emotional aspects involved in divorce, child custody,
+                  property division, adoptions and other important issues that
+                  affect your family.
+                </p>
+                <p>
+                  <Link href="/family-law">
+                    <a
+                      style={{
+                        color: MedBlue,
+                        textDecoration: 'none',
+                        fontWeight: 700,
+                      }}>
+                      Family law
+                    </a>
+                  </Link>{' '}
+                  matters are not only emotionally draining but can also be
+                  financially demanding as well. Our goal is to achieve your
+                  objectives efficiently and effectively. We are dedicated to
+                  moving your case forward and resolving your case with the
+                  least amount of stress possible. We take an interest in you,
+                  your family and your future.
+                </p>
+                <p>
+                  We invite you to{' '}
+                  <Link href="/contact">
+                    <a
+                      style={{
+                        color: MedBlue,
+                        textDecoration: 'none',
+                        fontWeight: 700,
+                      }}>
+                      contact
+                    </a>
+                  </Link>{' '}
+                  our firm and discuss your family law or divorce issue. We can
+                  help you bring your family law matter to a resolution, and you
+                  can have confidence that your interests will be protected, and
+                  your goals and objectives will be given the highest priority.
+                </p>
+                <p>
+                  It is vital that you protect your interests and consult an
+                  attorney about your case as soon as you find yourself facing
+                  legal challenges. The stakes are high, and we know nothing is
+                  more important than your family and your future. Let the
+                  successful team at Duggan Law Firm, PC work to build up your
+                  future, block by block.
+                </p>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    paddingTop: '50px',
+                    paddingBottom: '50px',
+                  }}>
+                  <Link href="/attorneys">
+                    <a>
+                      <Button textColor={Blue}>Meet Our Attorneys</Button>
+                    </a>
+                  </Link>
+                </div>
+              </InViewMonitor>
             </AboutBackground>
           </Container>
           <AboutOverlay />
         </AboutContainer>
-      </Layout>
+      </div>
     );
   }
 }

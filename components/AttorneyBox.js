@@ -7,9 +7,10 @@ const Card = styled.div`
   background-image: url(${props => props.image});
   background-size: cover;
   background-position: center center;
-  border: 4px solid #000;
+  border: 2px solid #000;
   position: relative;
   margin: 0 auto;
+  border-radius: 10px;
 
   @media (max-width: 768px) {
     width: 200px;

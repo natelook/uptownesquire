@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import Layout from '../components/Layout';
 import { Container } from '../components/styles/Tools';
 import { DarkBlue, Blue, MedBlue } from '../components/styles/Colors';
@@ -12,6 +13,7 @@ const Background = styled.div`
 const ContainerBackground = styled.div`
   background-color: #fff;
   padding: 20px 40px;
+  height: 800px;
 
   @media (max-width: 768px) {
     padding: 20px;
@@ -88,6 +90,18 @@ const PracticeItem = styled.li`
   }
 `;
 
+const ContactLink = styled.div`
+  margin-top: 40px;
+
+  display: flex;
+  justify-content: center;
+  a {
+    color: ${MedBlue};
+    text-decoration: none;
+    font-size: 22px;
+  }
+`;
+
 const Divorce =
   '<p>We know that you are likely facing one of the most stressful times in your life. Because of this, we focus on helping you minimize the financial and emotional impact of divorce. Our goal is to thoroughly understand the facts you bring to us related to your unique situation. We spend a lot of time asking questions. Once we hear your story, we offer legal guidance that is compassionate, while at the same time, strongly advocates for you, your parenting rights and your financial future.<p>We help you chart the course for the next phase of your life in a positive and productive way. We do this by advising you on every aspect of your divorce, including how to value complex estates with high assets involving business ownership and professional practices. We also help you create equitable parenting and custody arrangements so your family can function together after the divorce.</p><p>In Texas, a divorce, or suit for dissolution of marriage, is the legal process of terminating a marriage along with the rights and responsibilities of the marriage relationship. A divorce changes the legal marital status of the parties.</p><p>Texas is a “no fault” divorce state, which means that a party can dissolve the marriage without having to show that one party caused the break-up of the relationship. If applicable, a party can also ask the court to make a judgment as to the party that caused the break-up of the marriage, which could have an affect of the division of the marital assets.</p><p>If children were born during the marriage, a suit affecting the parent-child relationship will become part of the divorce suit. This part of the suit will contain provisions relating to possession and access to the children and payment of child support.</p>';
 
@@ -111,84 +125,90 @@ class FamilyLaw extends Component {
     selectedPractice: Divorce,
     familyLaw,
     title: 'Divorce',
+    animateClass: 'animated fadeIn',
   };
 
   selectPractice = (selection, name) => {
-    this.setState({ selectedPractice: selection, title: name });
+    this.setState({
+      animateClass: 'animated fadeIn',
+      selectedPractice: selection,
+      title: name,
+    });
   };
   render() {
-    const { selectedPractice, title } = this.state;
+    const { selectedPractice, title, animateClass } = this.state;
     return (
-      <Layout>
-        <Background style={{ paddingTop: '87.328px' }}>
-          <Container>
-            <ContainerBackground>
-              <Grid>
-                <Heading>
-                  <h1>Family Law</h1>
-                </Heading>
-                <OpenPractice>
-                  <h2>{title}</h2>
-                  <div dangerouslySetInnerHTML={{ __html: selectedPractice }} />
-                </OpenPractice>
-                <PracticeList>
-                  <div>
-                    <h2>Explore More</h2>
-                    <ul>
-                      <PracticeItem
-                        onClick={() => this.selectPractice(Divorce, 'Divorce')}
-                        selected={this.state.title == 'Divorce'}>
-                        Divorce
-                      </PracticeItem>
-                      <PracticeItem
-                        onClick={() =>
-                          this.selectPractice(ChildCustody, 'Child Custody')
-                        }
-                        selected={this.state.title == 'Child Custody'}>
-                        Child Custody
-                      </PracticeItem>
-                      <PracticeItem
-                        onClick={() =>
-                          this.selectPractice(Adoption, 'Adoption')
-                        }
-                        selected={this.state.title == 'Adoption'}>
-                        Adoption
-                      </PracticeItem>
-                      <PracticeItem
-                        onClick={() =>
-                          this.selectPractice(ChildSupport, 'Child Support')
-                        }
-                        selected={this.state.title == 'Child Support'}>
-                        Child Support
-                      </PracticeItem>
-                      <PracticeItem
-                        onClick={() =>
-                          this.selectPractice(Enforcement, 'Enforcement')
-                        }
-                        selected={this.state.title == 'Enforcement'}>
-                        Enforcement
-                      </PracticeItem>
-                      <PracticeItem
-                        onClick={() =>
-                          this.selectPractice(
-                            MaritalAgreements,
-                            'Pre-Marital & Post Marital Agreements',
-                          )
-                        }
-                        selected={
-                          this.state.title ==
-                          'Pre-Marital & Post Marital Agreements'
-                        }>
-                        Pre-Marital & Post-Marital Agreements
-                      </PracticeItem>
-                    </ul>
-                  </div>
-                </PracticeList>
-              </Grid>
-            </ContainerBackground>
-          </Container>
-        </Background>
-      </Layout>
+      <Background style={{ paddingTop: '75.328px' }}>
+        <Container>
+          <ContainerBackground>
+            <Grid>
+              <Heading>
+                <h1>Family Law</h1>
+              </Heading>
+              <OpenPractice className={animateClass}>
+                <h2>{title}</h2>
+                <div dangerouslySetInnerHTML={{ __html: selectedPractice }} />
+                <ContactLink>
+                  <Link href="/">
+                    <a>Conact us about {title.toLowerCase()}.</a>
+                  </Link>
+                </ContactLink>
+              </OpenPractice>
+              <PracticeList>
+                <div>
+                  <h2>Explore More</h2>
+                  <ul>
+                    <PracticeItem
+                      onClick={() => this.selectPractice(Divorce, 'Divorce')}
+                      selected={this.state.title == 'Divorce'}>
+                      Divorce
+                    </PracticeItem>
+                    <PracticeItem
+                      onClick={() =>
+                        this.selectPractice(ChildCustody, 'Child Custody')
+                      }
+                      selected={this.state.title == 'Child Custody'}>
+                      Child Custody
+                    </PracticeItem>
+                    <PracticeItem
+                      onClick={() => this.selectPractice(Adoption, 'Adoption')}
+                      selected={this.state.title == 'Adoption'}>
+                      Adoption
+                    </PracticeItem>
+                    <PracticeItem
+                      onClick={() =>
+                        this.selectPractice(ChildSupport, 'Child Support')
+                      }
+                      selected={this.state.title == 'Child Support'}>
+                      Child Support
+                    </PracticeItem>
+                    <PracticeItem
+                      onClick={() =>
+                        this.selectPractice(Enforcement, 'Enforcement')
+                      }
+                      selected={this.state.title == 'Enforcement'}>
+                      Enforcement
+                    </PracticeItem>
+                    <PracticeItem
+                      onClick={() =>
+                        this.selectPractice(
+                          MaritalAgreements,
+                          'Pre-Marital & Post Marital Agreements',
+                        )
+                      }
+                      selected={
+                        this.state.title ==
+                        'Pre-Marital & Post Marital Agreements'
+                      }>
+                      Pre-Marital & Post-Marital Agreements
+                    </PracticeItem>
+                  </ul>
+                </div>
+              </PracticeList>
+            </Grid>
+          </ContainerBackground>
+        </Container>
+      </Background>
     );
   }
 }

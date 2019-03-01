@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Layout from '../components/Layout';
 import AttorneyList from '../components/AttorneyList';
 import { Container } from '../components/styles/Tools';
 import { DarkBlue, Blue } from '../components/styles/Colors';
@@ -31,16 +30,14 @@ const ContainerBackground = styled.div`
 class Attorneys extends Component {
   render() {
     return (
-      <Layout page={this.props.page}>
-        <Background style={{ paddingTop: '87.328px' }}>
-          <Container>
-            <ContainerBackground>
-              <h1>Attorneys & Staff</h1>
-              <AttorneyList />
-            </ContainerBackground>
-          </Container>
-        </Background>
-      </Layout>
+      <Background style={{ paddingTop: '75.328px' }}>
+        <Container>
+          <ContainerBackground>
+            <h1>Attorneys & Staff</h1>
+            <AttorneyList />
+          </ContainerBackground>
+        </Container>
+      </Background>
     );
   }
 }

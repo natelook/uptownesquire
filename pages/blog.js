@@ -18,15 +18,13 @@ const BackgroundContainer = styled.div`
 class Blog extends Component {
   render() {
     return (
-      <Layout>
-        <Background style={{ paddingTop: '87.328px' }}>
-          <Container>
-            <BackgroundContainer>
-              <BlogList />
-            </BackgroundContainer>
-          </Container>
-        </Background>
-      </Layout>
+      <Background style={{ paddingTop: '75.328px' }}>
+        <Container>
+          <BackgroundContainer>
+            <BlogList />
+          </BackgroundContainer>
+        </Container>
+      </Background>
     );
   }
 }

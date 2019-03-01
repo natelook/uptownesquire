@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { Spring } from 'react-spring';
 import { Blue, Dark, Light, MedBlue, LightBlue } from './styles/Colors';
 import MobileNavList from './MobileNavList';
 
 const logo = '/static/images/logo.png';
-
-const LoadingBg = styled.div`
-  background-color: #fff;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+const whiteLogo = '/static/images/logo-white.png';
 
 const Nav = styled.div`
   background-color: ${props =>
@@ -33,7 +27,7 @@ const Nav = styled.div`
   a {
     color: ${props => (props.scroll || props.home != '/' ? Dark : Light)};
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 400;
     position: relative;
 
     &:hover {
@@ -147,45 +141,8 @@ const NavItem = styled.li`
   }
 `;
 
-const Ring = styled.div`
-  display: inline-block;
-  position: relative;
-  width: 64px;
-  height: 64px;
-  div {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    width: 51px;
-    height: 51px;
-    margin: 6px;
-    border: 6px solid ${Blue};
-    border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: ${Blue} transparent transparent transparent;
-  }
-  div:nth-child(1) {
-    animation-delay: -0.45s;
-  }
-  div:nth-child(2) {
-    animation-delay: -0.3s;
-  }
-  div:nth-child(3) {
-    animation-delay: -0.15s;
-  }
-  @keyframes lds-ring {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-`;
-
 class Header extends Component {
   state = {
-    loading: true,
     scrolled: false,
     open: false,
   };
@@ -210,33 +167,29 @@ class Header extends Component {
   };
 
   componentDidMount() {
-    this.setState({ loading: false });
     window.addEventListener('scroll', this.listenScrollEvent);
   }
 
   render() {
-    const { loading, scrolled, notHome, open } = this.state;
+    const { scrolled, notHome, open } = this.state;
+
     return (
       <div>
-        {loading ? (
-          <LoadingBg>
-            <Ring>
-              <div />
-              <div />
-              <div />
-              <div />
-            </Ring>
-          </LoadingBg>
-        ) : (
-          <div>
-            <Slider open={open}>
-              <MobileNavList />
-            </Slider>
-            <Nav scroll={scrolled} home={this.props.page}>
+        <Slider open={open}>
+          <MobileNavList />
+        </Slider>
+        <Spring from={{ top: '-200px' }} to={{ top: 0 }} delay={700}>
+          {props => (
+            <Nav scroll={scrolled} home={this.props.page} style={props}>
               <ImageContainer scroll={scrolled} home={this.props.page}>
                 <Link href="/">
                   <a>
-                    <img src={logo} alt="Duggan Law Firm, PC logo." />
+                    <img
+                      src={
+                        scrolled || this.props.page != '/' ? logo : whiteLogo
+                      }
+                      alt="Jamie Duggan Law Firm Logo"
+                    />
                   </a>
                 </Link>
               </ImageContainer>
@@ -278,8 +231,8 @@ class Header extends Component {
                 <Patty scrolled={scrolled} home={this.props.page} open={open} />
               </Burger>
             </Nav>
-          </div>
-        )}
+          )}
+        </Spring>
       </div>
     );
   }

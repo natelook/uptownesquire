@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
+import LoadingRing from '../components/LoadingRing';
 import { Config } from '../config';
 
 const Grid = styled.div`
@@ -48,6 +49,7 @@ const BlogTitle = styled.div`
 class Blog extends Component {
   state = {
     blog: [],
+    loading: true,
   };
 
   async componentWillMount() {
@@ -55,28 +57,35 @@ class Blog extends Component {
     const blog = await res.json();
     this.setState({
       blog,
+      loading: false,
     });
   }
 
   render() {
-    const { blog } = this.state;
+    const { blog, loading } = this.state;
     return (
-      <Grid>
-        {blog.map(post => (
-          <Link
-            key={post.id}
-            as={`/post/${post.slug}`}
-            href={`/post?slug=${post.slug}&apiRoute=post`}>
-            <a>
-              <BlogItem background="/static/images/family.jpeg">
-                <BlogTitle>
-                  <p>{post.title.rendered}</p>
-                </BlogTitle>
-              </BlogItem>
-            </a>
-          </Link>
-        ))}
-      </Grid>
+      <div>
+        {loading ? (
+          <LoadingRing />
+        ) : (
+          <Grid>
+            {blog.map(post => (
+              <Link
+                key={post.id}
+                as={`/post/${post.slug}`}
+                href={`/post?slug=${post.slug}&apiRoute=post`}>
+                <a>
+                  <BlogItem background="/static/images/family.jpeg">
+                    <BlogTitle>
+                      <p>{post.title.rendered}</p>
+                    </BlogTitle>
+                  </BlogItem>
+                </a>
+              </Link>
+            ))}
+          </Grid>
+        )}
+      </div>
     );
   }
 }

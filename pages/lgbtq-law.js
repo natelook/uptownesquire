@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import Layout from '../components/Layout';
 import { Container } from '../components/styles/Tools';
-import { DarkBlue, Blue, MedBlue } from '../components/styles/Colors';
+import {
+  DarkBlue,
+  Blue,
+  MedBlue,
+  LightBlue,
+} from '../components/styles/Colors';
 
 const Background = styled.div`
   background-color: ${DarkBlue};
@@ -11,6 +17,7 @@ const Background = styled.div`
 const ContainerBackground = styled.div`
   background-color: #fff;
   padding: 20px 40px;
+  height: 700px;
 
   @media (max-width: 768px) {
     padding: 20px;
@@ -74,6 +81,18 @@ const PracticeList = styled.div`
   }
 `;
 
+const ContactLink = styled.div`
+  margin-top: 40px;
+
+  display: flex;
+  justify-content: center;
+  a {
+    color: ${MedBlue};
+    text-decoration: none;
+    font-size: 22px;
+  }
+`;
+
 const PracticeItem = styled.li`
   margin-bottom: 40px;
   font-size: 24px;
@@ -116,92 +135,92 @@ class LgbtqLaw extends Component {
   render() {
     const { selectedPractice, title } = this.state;
     return (
-      <Layout>
-        <Background style={{ paddingTop: '87.328px' }}>
-          <Container>
-            <ContainerBackground>
-              <Grid>
-                <Heading>
-                  <h1>LGBTQ</h1>
-                  <p>
-                    The law firm of Duggan Law Firm, PC understands that not all
-                    people are the same and we celebrate the diversity of each
-                    of our clients. In Texas, people who identify as part of the
-                    LGBTQ community often face unique challenges in dealing with
-                    legal issues. Our attorneys are dedicated to approaching
-                    each client and each legal situation with the utmost case,
-                    respect and advocacy. Duggan Law Firm, PC is committed to
-                    staying apprised of evolving legal trends and laws specific
-                    to the LGBT community.
-                  </p>
-                </Heading>
-                <OpenPractice>
-                  <h2>{title}</h2>
-                  <div dangerouslySetInnerHTML={{ __html: selectedPractice }} />
-                </OpenPractice>
-                <PracticeList>
-                  <div>
-                    <h2>Explore More</h2>
-                    <PracticeUl>
-                      <PracticeItem
-                        onClick={() =>
-                          this.selectPractice(
-                            Transgender,
-                            'Transgender Legal Concerns',
-                          )
-                        }
-                        selected={
-                          this.state.title == 'Transgender Legal Concerns'
-                        }>
-                        Transgender Legal Concerns
-                      </PracticeItem>
-                      <PracticeItem
-                        onClick={() =>
-                          this.selectPractice(NameChanges, 'Name Changes')
-                        }
-                        selected={this.state.title == 'Name Changes'}>
-                        Name Changes
-                      </PracticeItem>
-                      <PracticeItem
-                        onClick={() =>
-                          this.selectPractice(
-                            SameSexDivorce,
-                            'Same Sex Divorce',
-                          )
-                        }
-                        selected={this.state.title == 'Same Sex Divorce'}>
-                        Same Sex Divorce & Custody
-                      </PracticeItem>
-                      <PracticeItem
-                        onClick={() =>
-                          this.selectPractice(
-                            SecondParentAdoption,
-                            'Second Parent Adoption',
-                          )
-                        }
-                        selected={this.state.title == 'Second Parent Adoption'}>
-                        Second Parent Adoption
-                      </PracticeItem>
-                      <PracticeItem
-                        onClick={() =>
-                          this.selectPractice(
-                            NonBiologicalParents,
-                            'Non-biological Parental Rights',
-                          )
-                        }
-                        selected={
-                          this.state.title == 'Non-biological Parental Rights'
-                        }>
-                        Non-biological Parental Rights
-                      </PracticeItem>
-                    </PracticeUl>
-                  </div>
-                </PracticeList>
-              </Grid>
-            </ContainerBackground>
-          </Container>
-        </Background>
-      </Layout>
+      <Background style={{ paddingTop: '75.328px' }}>
+        <Container>
+          <ContainerBackground>
+            <Grid>
+              <Heading>
+                <h1>LGBTQ</h1>
+                <p>
+                  The law firm of Duggan Law Firm, PC understands that not all
+                  people are the same and we celebrate the diversity of each of
+                  our clients. In Texas, people who identify as part of the
+                  LGBTQ community often face unique challenges in dealing with
+                  legal issues. Our attorneys are dedicated to approaching each
+                  client and each legal situation with the utmost case, respect
+                  and advocacy. Duggan Law Firm, PC is committed to staying
+                  apprised of evolving legal trends and laws specific to the
+                  LGBT community.
+                </p>
+              </Heading>
+              <OpenPractice>
+                <h2>{title}</h2>
+                <div dangerouslySetInnerHTML={{ __html: selectedPractice }} />
+                <ContactLink>
+                  <Link href="/">
+                    <a>Conact us about {title.toLowerCase()}.</a>
+                  </Link>
+                </ContactLink>
+              </OpenPractice>
+              <PracticeList>
+                <div>
+                  <h2>Explore More</h2>
+                  <PracticeUl>
+                    <PracticeItem
+                      onClick={() =>
+                        this.selectPractice(
+                          Transgender,
+                          'Transgender Legal Concerns',
+                        )
+                      }
+                      selected={
+                        this.state.title == 'Transgender Legal Concerns'
+                      }>
+                      Transgender Legal Concerns
+                    </PracticeItem>
+                    <PracticeItem
+                      onClick={() =>
+                        this.selectPractice(NameChanges, 'Name Changes')
+                      }
+                      selected={this.state.title == 'Name Changes'}>
+                      Name Changes
+                    </PracticeItem>
+                    <PracticeItem
+                      onClick={() =>
+                        this.selectPractice(SameSexDivorce, 'Same Sex Divorce')
+                      }
+                      selected={this.state.title == 'Same Sex Divorce'}>
+                      Same Sex Divorce & Custody
+                    </PracticeItem>
+                    <PracticeItem
+                      onClick={() =>
+                        this.selectPractice(
+                          SecondParentAdoption,
+                          'Second Parent Adoption',
+                        )
+                      }
+                      selected={this.state.title == 'Second Parent Adoption'}>
+                      Second Parent Adoption
+                    </PracticeItem>
+                    <PracticeItem
+                      onClick={() =>
+                        this.selectPractice(
+                          NonBiologicalParents,
+                          'Non-biological Parental Rights',
+                        )
+                      }
+                      selected={
+                        this.state.title == 'Non-biological Parental Rights'
+                      }>
+                      Non-biological Parental Rights
+                    </PracticeItem>
+                  </PracticeUl>
+                </div>
+              </PracticeList>
+            </Grid>
+          </ContainerBackground>
+        </Container>
+      </Background>
     );
   }
 }
