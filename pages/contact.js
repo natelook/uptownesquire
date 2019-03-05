@@ -24,6 +24,10 @@ const Grid = styled.div`
   justify-content: center;
   grid-gap: 10px;
   padding-right: 20px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 100%;
+  }
 `;
 
 const FormContainer = styled.div`
@@ -91,6 +95,16 @@ const OtherContactInfo = styled.div`
   a {
     color: ${Blue};
   }
+
+  iframe {
+    height: 450px;
+    width: 450px;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+      height: 300px;
+    }
+  }
 `;
 
 const Bold = styled.span`
@@ -134,8 +148,6 @@ class Contact extends Component {
   };
   render() {
     const { firstName, lastName, email, phone, message, errors } = this.state;
-    console.log(validationErrors);
-    // console.log(errors);
     return (
       <Background style={{ paddingTop: '75.328px' }}>
         <Container>
@@ -210,15 +222,19 @@ class Contact extends Component {
               <OtherContactInfo>
                 <ul>
                   <li>
-                    3626 N. Hall Street, Ste 820
-                    <br /> Dallas, Texas 75219
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.358348523679!2d-96.80828128411194!3d32.80926888096242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9ecc2ea61ab9%3A0x2748f739998f7b63!2s3626+N+Hall+St+%23820%2C+Dallas%2C+TX+75219!5e0!3m2!1sen!2sus!4v1551743231728"
+                      style={{ border: '2px solid #000', borderRadius: '5px' }}
+                      allowFullScreen
+                    />
                   </li>
                   <li>
                     <Bold>Phone: </Bold>
                     <a href="tel:21449491647">214-494-1647</a>
                   </li>
                   <li>
-                    <Bold>Fax: </Bold>214-731-7068
+                    <Bold>Fax: </Bold>
+                    <a href="fax:2147317068">214-731-7068</a>
                   </li>
                   <li>
                     <Bold>Email: </Bold>

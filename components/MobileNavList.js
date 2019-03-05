@@ -7,7 +7,7 @@ const NavList = styled.ul`
   a {
     color: #fff;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
   }
 `;
 
@@ -46,6 +46,12 @@ const MobileNavList = () => (
       <Link href="/contact">
         <a>Contact</a>
       </Link>
+    </NavItem>
+    <NavItem>
+      <a href="tel:2144941647">214-494-1647</a>
+    </NavItem>
+    <NavItem style={{ display: 'flex', alignItems: 'center' }}>
+      <a href="mailto:info@uptownesquire.com">info@uptownesquire.com</a>
     </NavItem>
   </NavList>
 );

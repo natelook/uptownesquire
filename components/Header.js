@@ -224,6 +224,30 @@ class Header extends Component {
                     <a>Contact</a>
                   </Link>
                 </NavItem>
+                <NavItem>
+                  <a href="tel:2144941647">
+                    <img
+                      style={{ height: '25px', width: '25px' }}
+                      src={
+                        scrolled || this.props.page != '/'
+                          ? '/static/images/phone.png'
+                          : '/static/images/phone-white.png'
+                      }
+                    />
+                  </a>
+                </NavItem>
+                <NavItem>
+                  <a href="mailto:info@uptownesquire.com">
+                    <img
+                      style={{ height: '25px', width: '25px' }}
+                      src={
+                        scrolled || this.props.page != '/'
+                          ? '/static/images/email.png'
+                          : '/static/images/email-white.png'
+                      }
+                    />
+                  </a>
+                </NavItem>
               </NavList>
               <Burger onClick={this.openNav}>
                 <Patty scrolled={scrolled} home={this.props.page} open={open} />

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
+import { Spring } from 'react-spring';
 import AttorneyBox from './AttorneyBox';
 import { Config } from '../config';
 import LoadingRing from './LoadingRing';

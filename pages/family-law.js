@@ -149,7 +149,7 @@ class FamilyLaw extends Component {
                 <h2>{title}</h2>
                 <div dangerouslySetInnerHTML={{ __html: selectedPractice }} />
                 <ContactLink>
-                  <Link href="/">
+                  <Link href="/contact">
                     <a>Conact us about {title.toLowerCase()}.</a>
                   </Link>
                 </ContactLink>

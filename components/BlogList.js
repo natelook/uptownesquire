@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
+import { Spring } from 'react-spring';
 import LoadingRing from '../components/LoadingRing';
 import { Config } from '../config';
 
@@ -68,22 +69,32 @@ class Blog extends Component {
         {loading ? (
           <LoadingRing />
         ) : (
-          <Grid>
-            {blog.map(post => (
-              <Link
-                key={post.id}
-                as={`/post/${post.slug}`}
-                href={`/post?slug=${post.slug}&apiRoute=post`}>
-                <a>
-                  <BlogItem background="/static/images/family.jpeg">
-                    <BlogTitle>
-                      <p>{post.title.rendered}</p>
-                    </BlogTitle>
-                  </BlogItem>
-                </a>
-              </Link>
-            ))}
-          </Grid>
+          <Spring
+            from={{ opacity: 0 }}
+            to={{ opacity: 1 }}
+            config={{ duration: 500 }}>
+            {props => (
+              <div style={props}>
+                <h1>Blog Posts</h1>
+                <Grid>
+                  {blog.map(post => (
+                    <Link
+                      key={post.id}
+                      as={`/post/${post.slug}`}
+                      href={`/post?slug=${post.slug}&apiRoute=post`}>
+                      <a>
+                        <BlogItem background="/static/images/family.jpeg">
+                          <BlogTitle>
+                            <p>{post.title.rendered}</p>
+                          </BlogTitle>
+                        </BlogItem>
+                      </a>
+                    </Link>
+                  ))}
+                </Grid>
+              </div>
+            )}
+          </Spring>
         )}
       </div>
     );
