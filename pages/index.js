@@ -1,24 +1,29 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import Link from 'next/link';
-import { Spring } from 'react-spring';
-import ScrollAnimation from 'react-animate-on-scroll';
-import InViewMonitor from 'react-inview-monitor';
-import { Container } from '../components/styles/Tools';
+import React, { Component } from "react";
+import styled from "styled-components";
+import Link from "next/link";
+import { Spring } from "react-spring";
+import ScrollAnimation from "react-animate-on-scroll";
+import InViewMonitor from "react-inview-monitor";
+import { Container } from "../components/styles/Tools";
 import {
   LightBlue,
   DarkBlue,
   Blue,
   MedBlue,
-} from '../components/styles/Colors';
-import Layout from '../components/Layout';
-import Button from '../components/Button';
+} from "../components/styles/Colors";
+import Layout from "../components/Layout";
+import Button from "../components/Button";
 
-const signing = '/static/images/header2.jpeg';
-const family = '/static/images/family.jpeg';
-const lgbtq = '/static/images/flag.jpg';
-const dallas = '/static/images/dallas.jpg';
-const hands = '/static/images/hands.jpeg';
+const signing = "/static/images/header2.jpeg";
+const family = "/static/images/family.jpeg";
+const lgbtq = "/static/images/flag.jpg";
+const dallas = "/static/images/dallas.jpg";
+const hands = "/static/images/hands.jpeg";
+
+// New pics
+const circleHands = "/static/images/circle_hands.jpg";
+const redHeart = "/static/images/red_heart.jpg";
+const scalesJustice = "static/images/scales_justice.jpg";
 
 const HomeContainer = styled.div`
   height: 100vh;
@@ -30,14 +35,16 @@ const Heading = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   color: white;
-  background-image: url(${signing});
+  background-image: url(${scalesJustice});
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center bottom;
+  background-position: center center;
   position: relative;
   z-index: -2;
-  font-family: 'Assistant';
+  font-family: "Assistant";
 
   @media (max-width: 768px) {
     height: 50vh;
@@ -257,11 +264,12 @@ class Home extends Component {
               <Spring
                 from={{ opacity: 0, marginLeft: -200 }}
                 to={{ opacity: 1, marginLeft: 0 }}
-                config={{ duration: 500, delay: 0 }}>
+                config={{ duration: 500, delay: 0 }}
+              >
                 {props => (
                   <div style={props}>
                     <h1>
-                      One block at a time, we build a{' '}
+                      One block at a time, we build a{" "}
                       <span style={{ color: LightBlue }}>legal strategy</span>
                       <br /> rooted in protecting you and your family.
                     </h1>
@@ -277,17 +285,19 @@ class Home extends Component {
                 <Spring
                   from={{ opacity: 0 }}
                   to={{ opacity: 1 }}
-                  config={{ delay: 500 }}>
+                  config={{ delay: 500 }}
+                >
                   {props => (
                     <div style={props}>
                       <h2>Family Law</h2>
                       <p>We work to guide your family through this process.</p>
-                      <Link href="family-law">
+                      <Link href='family-law'>
                         <a>
                           <Button
-                            textColor="#fff"
-                            marginTop="20px"
-                            element={'a'}>
+                            textColor='#fff'
+                            marginTop='20px'
+                            element={"a"}
+                          >
                             Learn More
                           </Button>
                         </a>
@@ -296,14 +306,15 @@ class Home extends Component {
                   )}
                 </Spring>
               </div>
-              <GridOverlay overlayColor={'rgba(0,52,88,.50)'} />
+              <GridOverlay overlayColor={"rgba(8,92,142,.50)"} />
             </Practice>
-            <Practice image={hands}>
+            <Practice image={circleHands}>
               <div style={{ zIndex: 20 }}>
                 <Spring
                   from={{ opacity: 0 }}
                   to={{ opacity: 1 }}
-                  config={{ delay: 500 }}>
+                  config={{ delay: 500 }}
+                >
                   {props => (
                     <div style={props}>
                       <h2>LGBTQ Law</h2>
@@ -311,12 +322,13 @@ class Home extends Component {
                         We recognize the specific legal concerns of the LGBTQ
                         community.
                       </p>
-                      <Link href="/lgbtq-law">
+                      <Link href='/lgbtq-law'>
                         <a>
                           <Button
-                            textColor="#fff"
-                            marginTop="20px"
-                            element={'a'}>
+                            textColor='#fff'
+                            marginTop='20px'
+                            element={"a"}
+                          >
                             Learn More
                           </Button>
                         </a>
@@ -325,7 +337,7 @@ class Home extends Component {
                   )}
                 </Spring>
               </div>
-              <GridOverlay overlayColor={'rgba(8,92,142,.50)'} />
+              <GridOverlay overlayColor={"rgba(8,92,142,.50)"} />
             </Practice>
           </Grid>
         </HomeContainer>
@@ -359,16 +371,17 @@ class Home extends Component {
                 family.
               </p>
               <p>
-                <Link href="/family-law">
+                <Link href='/family-law'>
                   <a
                     style={{
                       color: MedBlue,
-                      textDecoration: 'none',
+                      textDecoration: "none",
                       fontWeight: 700,
-                    }}>
+                    }}
+                  >
                     Family law
                   </a>
-                </Link>{' '}
+                </Link>{" "}
                 matters are not only emotionally draining but can also be
                 financially demanding as well. Our goal is to achieve your
                 objectives efficiently and effectively. We are dedicated to
@@ -377,17 +390,18 @@ class Home extends Component {
                 family and your future.
               </p>
               <p>
-                We invite you to{' '}
-                <Link href="/contact">
+                We invite you to{" "}
+                <Link href='/contact'>
                   <a
                     style={{
                       color: MedBlue,
-                      textDecoration: 'none',
+                      textDecoration: "none",
                       fontWeight: 700,
-                    }}>
+                    }}
+                  >
                     contact
                   </a>
-                </Link>{' '}
+                </Link>{" "}
                 our firm and discuss your family law or divorce issue. We can
                 help you bring your family law matter to a resolution, and you
                 can have confidence that your interests will be protected, and
@@ -403,12 +417,13 @@ class Home extends Component {
               </p>
               <div
                 style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  paddingTop: '50px',
-                  paddingBottom: '50px',
-                }}>
-                <Link href="/attorneys">
+                  display: "flex",
+                  justifyContent: "center",
+                  paddingTop: "50px",
+                  paddingBottom: "50px",
+                }}
+              >
+                <Link href='/attorneys'>
                   <a>
                     <Button textColor={Blue}>Meet Our Attorneys</Button>
                   </a>

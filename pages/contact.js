@@ -1,29 +1,62 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
-import Layout from '../components/Layout';
-import { Container } from '../components/styles/Tools';
-import { DarkBlue, Blue } from '../components/styles/Colors';
-import Button from '../components/Button';
-import isEmpty from '../components/isEmpty';
-import Validator from 'validator';
-import { throws } from 'assert';
+import React, { Component } from "react";
+import styled from "styled-components";
+import axios from "axios";
+import Layout from "../components/Layout";
+import { Container } from "../components/styles/Tools";
+import { DarkBlue, Blue } from "../components/styles/Colors";
+import Button from "../components/Button";
+import isEmpty from "../components/isEmpty";
+import Validator from "validator";
+import { throws } from "assert";
+
+const buildingImage = "/static/images/building.jpg";
 
 const Background = styled.div`
   background-color: ${DarkBlue};
 `;
 
 const ContainerBackground = styled.div`
-  padding: 20px 40px;
   background-color: #fff;
+`;
+
+const Heading = styled.div`
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 300px;
+  background-image: url(${buildingImage});
+  background-size: cover;
+  background-position: 0 375px;
+  border: 2px solid white;
+  border-top: none;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: #fff;
+    margin-left: 20px;
+    margin-top: 30px;
+    z-index: 3;
+    position: relative;
+    font-size: 50px;
+  }
+`;
+
+const HeadingOverlay = styled.div`
+  background-color: rgba(0, 52, 88, 0.2);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
 `;
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
-  justify-content: center;
-  grid-gap: 10px;
-  padding-right: 20px;
 
   @media (max-width: 768px) {
     grid-template-columns: 100%;
@@ -115,11 +148,11 @@ const validationErrors = {};
 
 class Contact extends Component {
   state = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: "",
     errors: {},
   };
 
@@ -136,7 +169,7 @@ class Contact extends Component {
     };
 
     axios
-      .post('/contact/submit', formData)
+      .post("/contact/submit", formData)
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
@@ -149,22 +182,25 @@ class Contact extends Component {
   render() {
     const { firstName, lastName, email, phone, message, errors } = this.state;
     return (
-      <Background style={{ paddingTop: '75.328px' }}>
+      <Background style={{ paddingTop: "75.328px" }}>
         <Container>
           <ContainerBackground>
             <Grid>
+              <Heading>
+                <h1>Contact Us</h1>
+                <HeadingOverlay />
+              </Heading>
               <div>
-                <h1>Contact</h1>
                 <FormContainer>
                   <form onSubmit={this.handleSubmit}>
                     <FormInput>
                       <label>
                         First Name
                         <input
-                          name="firstName"
+                          name='firstName'
                           onChange={this.handleChange}
                           value={firstName}
-                          placeholder="First Name..."
+                          placeholder='First Name...'
                           style={{ borderColor: null }}
                         />
                       </label>
@@ -173,10 +209,10 @@ class Contact extends Component {
                       <label>
                         Last Name
                         <input
-                          name="lastName"
+                          name='lastName'
                           onChange={this.handleChange}
                           value={lastName}
-                          placeholder="Last Name..."
+                          placeholder='Last Name...'
                         />
                       </label>
                     </FormInput>
@@ -184,10 +220,10 @@ class Contact extends Component {
                       <label>
                         Email
                         <input
-                          name="email"
+                          name='email'
                           onChange={this.handleChange}
                           value={email}
-                          placeholder="Email..."
+                          placeholder='Email...'
                         />
                       </label>
                     </FormInput>
@@ -195,10 +231,10 @@ class Contact extends Component {
                       <label>
                         Phone Number
                         <input
-                          name="phone"
+                          name='phone'
                           onChange={this.handleChange}
                           value={phone}
-                          placeholder="Phone Number..."
+                          placeholder='Phone Number...'
                         />
                       </label>
                     </FormInput>
@@ -206,10 +242,10 @@ class Contact extends Component {
                       <label>
                         Message
                         <textarea
-                          name="message"
+                          name='message'
                           onChange={this.handleChange}
                           value={message}
-                          placeholder="Write a brief message regarding your legal concern..."
+                          placeholder='Write a brief message regarding your legal concern...'
                         />
                       </label>
                     </FormInput>
@@ -223,22 +259,25 @@ class Contact extends Component {
                 <ul>
                   <li>
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.358348523679!2d-96.80828128411194!3d32.80926888096242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9ecc2ea61ab9%3A0x2748f739998f7b63!2s3626+N+Hall+St+%23820%2C+Dallas%2C+TX+75219!5e0!3m2!1sen!2sus!4v1551743231728"
-                      style={{ border: '2px solid #000', borderRadius: '5px' }}
+                      src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.358348523679!2d-96.80828128411194!3d32.80926888096242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9ecc2ea61ab9%3A0x2748f739998f7b63!2s3626+N+Hall+St+%23820%2C+Dallas%2C+TX+75219!5e0!3m2!1sen!2sus!4v1551743231728'
+                      style={{
+                        border: "2px solid #000",
+                        borderRadius: "5px",
+                      }}
                       allowFullScreen
                     />
                   </li>
                   <li>
                     <Bold>Phone: </Bold>
-                    <a href="tel:21449491647">214-494-1647</a>
+                    <a href='tel:21449491647'>214-494-1647</a>
                   </li>
                   <li>
                     <Bold>Fax: </Bold>
-                    <a href="fax:2147317068">214-731-7068</a>
+                    <a href='fax:2147317068'>214-731-7068</a>
                   </li>
                   <li>
                     <Bold>Email: </Bold>
-                    <a href="mailto:info@uptownesquire.com">
+                    <a href='mailto:info@uptownesquire.com'>
                       info@uptownesquire.com
                     </a>
                   </li>

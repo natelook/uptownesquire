@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import fetch from 'isomorphic-unfetch';
-import Link from 'next/link';
-import { Spring } from 'react-spring';
-import AttorneyBox from './AttorneyBox';
-import { Config } from '../config';
-import LoadingRing from './LoadingRing';
+import React, { Component } from "react";
+import styled from "styled-components";
+import fetch from "isomorphic-unfetch";
+import Link from "next/link";
+import AttorneyBox from "./AttorneyBox";
+import { Config } from "../config";
+import LoadingRing from "./LoadingRing";
 
-const vertLogo = '/static/images/vertLogo.svg';
+const vertLogo = "/static/images/vertLogo.svg";
 
 const List = styled.div`
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  padding: 0 25px;
   justify-content: center;
 
   @media (max-width: 1024px) {
@@ -51,7 +49,8 @@ class AttorneyList extends Component {
               <Link
                 as={`/attorney/${attorney.slug}`}
                 href={`/attorney?slug=${attorney.slug}&apiRoute=attorneys`}
-                key={attorney.id}>
+                key={attorney.id}
+              >
                 <a>
                   <AttorneyBox
                     name={attorney.title.rendered}
