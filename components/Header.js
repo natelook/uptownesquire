@@ -182,50 +182,50 @@ class Header extends Component {
           {props => (
             <Nav scroll={scrolled} home={this.props.page} style={props}>
               <ImageContainer scroll={scrolled} home={this.props.page}>
-                <Link href="/">
+                <Link href='/'>
                   <a>
                     <img
                       src={
                         scrolled || this.props.page != '/' ? logo : whiteLogo
                       }
-                      alt="Jamie Duggan Law Firm Logo"
+                      alt='Jamie Duggan Law Firm Logo'
                     />
                   </a>
                 </Link>
               </ImageContainer>
               <NavList>
                 <NavItem>
-                  <Link href="/">
+                  <Link href='/'>
                     <a>Home</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href="/attorneys">
+                  <Link href='/attorneys'>
                     <a>Attorneys & Staff</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href="/family-law">
+                  <Link href='/family-law'>
                     <a>Family Law</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href="/lgbtq-law">
+                  <Link href='/lgbtq-law'>
                     <a>LGBTQ Law</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href="/blog">
+                  <Link href='/blog'>
                     <a>Blog</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href="/contact">
+                  <Link href='/contact'>
                     <a>Contact</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <a href="tel:2144941647">
+                  <a href='tel:2144941647'>
                     <img
                       style={{ height: '25px', width: '25px' }}
                       src={
@@ -237,7 +237,7 @@ class Header extends Component {
                   </a>
                 </NavItem>
                 <NavItem>
-                  <a href="mailto:info@uptownesquire.com">
+                  <a href='mailto:info@uptownesquire.com'>
                     <img
                       style={{ height: '25px', width: '25px' }}
                       src={
