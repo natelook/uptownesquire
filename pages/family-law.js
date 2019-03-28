@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import Scroll from 'react-scroll';
 import { Container } from '../components/styles/Tools';
 import { DarkBlue, MedBlue } from '../components/styles/Colors';
 import familyLaw from '../familyLaw.json';
@@ -157,6 +158,10 @@ class FamilyLaw extends Component {
   };
 
   selectPractice = (selection, name) => {
+    const scroll = Scroll.animateScroll;
+    const title = document.getElementById('area-title');
+    scroll.scrollTo(title.offsetTop);
+
     this.setState({
       animateClass: 'animated fadeIn',
       selectedPractice: selection,
@@ -170,7 +175,7 @@ class FamilyLaw extends Component {
         <Container>
           <ContainerBackground>
             <Grid>
-              <Heading>
+              <Heading id="area-title">
                 <h1>Family Law</h1>
                 <HeadingOverlay />
               </Heading>
@@ -178,7 +183,7 @@ class FamilyLaw extends Component {
                 <h2>{title}</h2>
                 <div dangerouslySetInnerHTML={{ __html: selectedPractice }} />
                 <ContactLink>
-                  <Link href='/contact'>
+                  <Link href="/contact">
                     <a>Conact us about {title.toLowerCase()}.</a>
                   </Link>
                 </ContactLink>
@@ -189,38 +194,33 @@ class FamilyLaw extends Component {
                   <ul>
                     <PracticeItem
                       onClick={() => this.selectPractice(Divorce, 'Divorce')}
-                      selected={this.state.title == 'Divorce'}
-                    >
+                      selected={this.state.title == 'Divorce'}>
                       Divorce
                     </PracticeItem>
                     <PracticeItem
                       onClick={() =>
                         this.selectPractice(ChildCustody, 'Child Custody')
                       }
-                      selected={this.state.title == 'Child Custody'}
-                    >
+                      selected={this.state.title == 'Child Custody'}>
                       Child Custody
                     </PracticeItem>
                     <PracticeItem
                       onClick={() => this.selectPractice(Adoption, 'Adoption')}
-                      selected={this.state.title == 'Adoption'}
-                    >
+                      selected={this.state.title == 'Adoption'}>
                       Adoption
                     </PracticeItem>
                     <PracticeItem
                       onClick={() =>
                         this.selectPractice(ChildSupport, 'Child Support')
                       }
-                      selected={this.state.title == 'Child Support'}
-                    >
+                      selected={this.state.title == 'Child Support'}>
                       Child Support
                     </PracticeItem>
                     <PracticeItem
                       onClick={() =>
                         this.selectPractice(Enforcement, 'Enforcement')
                       }
-                      selected={this.state.title == 'Enforcement'}
-                    >
+                      selected={this.state.title == 'Enforcement'}>
                       Enforcement
                     </PracticeItem>
                     <PracticeItem
@@ -233,8 +233,7 @@ class FamilyLaw extends Component {
                       selected={
                         this.state.title ==
                         'Pre-Marital & Post Marital Agreements'
-                      }
-                    >
+                      }>
                       Pre-Marital & Post-Marital Agreements
                     </PracticeItem>
                   </ul>
