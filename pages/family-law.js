@@ -17,7 +17,6 @@ const ContainerBackground = styled.div`
   padding-bottom: 50px;
 
   @media (max-width: 768px) {
-    padding: 20px;
   }
 
   h1 {
@@ -77,6 +76,7 @@ const HeadingOverlay = styled.div`
 const OpenPractice = styled.div`
   padding-left: 50px;
   @media (max-width: 414px) {
+    padding: 0 20px;
     grid-column-start: 1;
     grid-column-end: 3;
   }
@@ -99,6 +99,7 @@ const PracticeList = styled.div`
   }
 
   @media (max-width: 414px) {
+    padding: 0 20px;
     grid-column-start: 1;
     grid-column-end: 3;
     text-align: left;

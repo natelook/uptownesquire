@@ -23,7 +23,6 @@ const ContainerBackground = styled.div`
   padding-bottom: 100px;
 
   @media (max-width: 768px) {
-    padding: 20px;
   }
 
   h1 {
@@ -85,11 +84,16 @@ const Bio = styled.div`
   grid-column-start: 1;
   grid-column-end: 3;
   padding: 0 40px;
+
+  @media (max-width: 414px) {
+    padding: 0 20px;
+  }
 `;
 
 const OpenPractice = styled.div`
   padding-left: 50px;
   @media (max-width: 414px) {
+    padding: 0 20px;
     grid-column-start: 1;
     grid-column-end: 3;
   }
@@ -116,6 +120,7 @@ const PracticeList = styled.div`
     grid-column-end: 3;
     text-align: left;
     margin-left: 0;
+    padding: 0 20px;
   }
 `;
 
