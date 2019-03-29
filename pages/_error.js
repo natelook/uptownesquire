@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Layout from '../components/Layout';
 
 class Error extends Component {
   static getInitialProps({ res, err }) {
@@ -8,11 +7,7 @@ class Error extends Component {
   }
 
   render() {
-    return (
-      <Layout>
-        <div>{this.props.statusCode}</div>
-      </Layout>
-    );
+    return <div>{this.props.statusCode}</div>;
   }
 }
 

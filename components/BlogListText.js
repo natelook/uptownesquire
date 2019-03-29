@@ -3,7 +3,6 @@ import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Config } from '../config';
-import { Blue } from '../components/styles/Colors';
 
 const List = styled.div`
   font-size: 17px;
@@ -12,7 +11,7 @@ const List = styled.div`
   }
 
   a {
-    color: ${Blue};
+    color: ${props => props.theme.blue};
     text-decoration: none;
   }
 

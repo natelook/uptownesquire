@@ -1,11 +1,10 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import AttorneyList from "../components/AttorneyList";
-import { Container } from "../components/styles/Tools";
-import { DarkBlue, Blue } from "../components/styles/Colors";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import AttorneyList from '../components/AttorneyList';
+import { Container } from '../components/styles/Tools';
 
 const Background = styled.div`
-  background-color: ${DarkBlue};
+  background-color: ${props => props.theme.darkBlue};
 `;
 
 const ContainerBackground = styled.div`
@@ -19,7 +18,7 @@ const ContainerBackground = styled.div`
   h1 {
     padding: 50px 20px;
     margin: 0;
-    color: ${Blue};
+    color: ${props => props.theme.blue};
 
     @media (max-width: 1024px) {
       padding-left: 30px;
@@ -30,7 +29,7 @@ const ContainerBackground = styled.div`
 class Attorneys extends Component {
   render() {
     return (
-      <Background style={{ paddingTop: "75.328px" }}>
+      <Background style={{ paddingTop: '75.328px' }}>
         <Container attorneyPage={true}>
           <ContainerBackground>
             <h1>Attorneys & Staff</h1>

@@ -4,17 +4,16 @@ import axios from 'axios';
 import validator from 'validator';
 import AlertBox from '../components/AlertBox';
 import { Container } from '../components/styles/Tools';
-import { DarkBlue, Blue } from '../components/styles/Colors';
 import Button from '../components/Button';
 
 const buildingImage = '/static/images/building.jpg';
 
 const Background = styled.div`
-  background-color: ${DarkBlue};
+  background-color: ${props => props.theme.darkBlue};
 `;
 
 const ContainerBackground = styled.div`
-  background-color: #fff;
+  background-color: ${props => props.theme.light};
 `;
 
 const Heading = styled.div`
@@ -96,7 +95,7 @@ const FormInput = styled.div`
     border-radius: 5px;
     box-sizing: border-box;
     padding: 20px 10px;
-    border: 2px solid ${Blue};
+    border: 2px solid ${props => props.theme.blue};
   }
 
   textarea {
@@ -105,7 +104,7 @@ const FormInput = styled.div`
     font-size: 20px;
     height: 100px;
     border-radius: 5px;
-    border: 2px solid ${Blue};
+    border: 2px solid ${props => props.theme.blue};
     box-sizing: border-box;
     padding: 10px 10px;
     resize: none;
@@ -134,7 +133,7 @@ const OtherContactInfo = styled.div`
   }
 
   a {
-    color: ${Blue};
+    color: ${props => props.theme.blue};
   }
 
   iframe {
@@ -158,18 +157,7 @@ const Bold = styled.span`
 `;
 
 const ErrorsList = styled.ul`
-  color: #ff0033;
-`;
-
-const Success = styled.div`
-  background-color: pink;
-  position: absolute;
-  display: block;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  transition: 0.5s;
-  top: ${props => (props.success ? '0px' : '-2000px')};
+  color: ${props => props.theme.errorRed};
 `;
 
 class Contact extends Component {

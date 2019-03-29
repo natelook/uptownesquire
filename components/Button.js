@@ -4,7 +4,7 @@ import { Blue } from './styles/Colors';
 const Btn = styled.button`
   display: inline-block;
   font-size: 23px;
-  border: 3px solid ${Blue};
+  border: 3px solid ${props => props.theme.blue};
   border-radius: 5px;
   background: none;
   padding: 10px 15px;

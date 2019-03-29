@@ -3,19 +3,12 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { Spring } from 'react-spring';
 import Scroll from 'react-scroll';
-import Layout from '../components/Layout';
 import { Container } from '../components/styles/Tools';
-import {
-  DarkBlue,
-  Blue,
-  MedBlue,
-  LightBlue,
-} from '../components/styles/Colors';
 
 const circleHands = '/static/images/circle_hands.jpg';
 
 const Background = styled.div`
-  background-color: ${DarkBlue};
+  background-color: ${props => props.theme.darkBlue};
 `;
 
 const ContainerBackground = styled.div`
@@ -26,7 +19,7 @@ const ContainerBackground = styled.div`
   }
 
   h1 {
-    color: ${Blue};
+    color: ${props => props.theme.blue};
   }
 
   h2 {
@@ -44,8 +37,6 @@ const Grid = styled.div`
     grid-template-columns:
   } */
 `;
-
-const PracticeType = styled.div``;
 
 const Heading = styled.div`
   grid-column-start: 1;
@@ -130,7 +121,7 @@ const ContactLink = styled.div`
   display: flex;
   justify-content: center;
   a {
-    color: ${MedBlue};
+    color: ${props => props.theme.medBlue};
     text-decoration: none;
     font-size: 22px;
   }
@@ -141,7 +132,7 @@ const PracticeItem = styled.li`
   font-size: 24px;
   font-weight: 500;
   cursor: pointer;
-  color: ${props => (props.selected ? MedBlue : '#000')};
+  color: ${props => (props.selected ? props.theme.medBlue : '#000')};
 
   @media (max-width: 768px) {
     font-size: 20px;

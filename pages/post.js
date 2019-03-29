@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 import styled from 'styled-components';
 import { Config } from '../config';
-import Layout from '../components/Layout';
 import BlogListText from '../components/BlogListText';
 import { Container } from '../components/styles/Tools';
-import { DarkBlue, Blue } from '../components/styles/Colors';
 
 const Background = styled.div`
-  background-color: ${DarkBlue};
+  background-color: ${props => props.theme.darkBlue};
   a {
-    color: ${Blue};
+    color: ${props => props.theme.blue};
   }
 `;
 

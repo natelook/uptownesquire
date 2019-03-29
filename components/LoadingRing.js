@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Blue } from './styles/Colors';
 
 const LoadingBg = styled.div`
   background-color: #fff;
@@ -25,10 +24,11 @@ const Ring = styled.div`
     width: 51px;
     height: 51px;
     margin: 6px;
-    border: 6px solid ${Blue};
+    border: 6px solid ${props => props.theme.blue};
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: ${Blue} transparent transparent transparent;
+    border-color: ${props => props.theme.blue} transparent transparent
+      transparent;
   }
   div:nth-child(1) {
     animation-delay: -0.45s;

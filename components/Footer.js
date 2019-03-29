@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import fetch from 'isomorphic-unfetch';
-import { Config } from '../config';
-import { Dark, Blue, MedBlue } from './styles/Colors';
 import { Container } from './styles/Tools';
 
 const FooterContainer = styled.div`
-  background-color: ${Dark};
+  background-color: ${props => props.theme.dark};
   color: #999;
   position: relative;
 `;
@@ -39,7 +36,7 @@ const List = styled.div`
     text-decoration: none;
 
     &:hover {
-      color: ${MedBlue};
+      color: ${props => props.theme.medBlue};
     }
   }
 

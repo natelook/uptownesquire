@@ -1,14 +1,11 @@
-import React, { Component } from "react";
-import fetch from "isomorphic-unfetch";
-import styled from "styled-components";
-import ScrollAnimation from "react-animate-on-scroll";
-import { Container } from "../components/styles/Tools";
-import Layout from "../components/Layout";
-import { Config } from "../config";
-import { DarkBlue, Blue } from "../components/styles/Colors";
+import React, { Component } from 'react';
+import fetch from 'isomorphic-unfetch';
+import styled from 'styled-components';
+import { Container } from '../components/styles/Tools';
+import { Config } from '../config';
 
 const Background = styled.div`
-  background-color: ${DarkBlue};
+  background-color: ${props => props.theme.darkBlue};
 `;
 
 const ContainerBackground = styled.div`
@@ -18,7 +15,7 @@ const ContainerBackground = styled.div`
   grid-template-columns: 40% 60%;
 
   h1 {
-    color: ${Blue};
+    color: ${props => props.theme.blue};
   }
 
   p {
@@ -75,7 +72,7 @@ const ImageContainer = styled.div`
   }
 
   a {
-    color: ${Blue};
+    color: ${props => props.theme.blue};
     text-decoration: none;
   }
 `;
@@ -95,7 +92,7 @@ const AttorneyImage = styled.div`
   background-size: cover;
   background-position: center;
   margin: 0 auto;
-  border: 2px solid #000;
+  border: 2px solid ${props => props.theme.dark};
   border-radius: 10px;
   @media (max-width: 768px) {
     height: 400px;
@@ -107,12 +104,12 @@ const AttorneyImage = styled.div`
   }
 `;
 
-const stateBar = "/static/images/state-bar-of-texas.png";
-const dbs = "/static/images/dbs.png";
-const lgbtChamber = "/static/images/lgbtchamber.png";
-const superLawyer = "/static/images/superlawyers-1.png";
-const tarrant = "/static/images/tarrant.png";
-const vertLogo = "/static/images/vertLogo.svg";
+const stateBar = '/static/images/state-bar-of-texas.png';
+const dbs = '/static/images/dbs.png';
+const lgbtChamber = '/static/images/lgbtchamber.png';
+const superLawyer = '/static/images/superlawyers-1.png';
+const tarrant = '/static/images/tarrant.png';
+const vertLogo = '/static/images/vertLogo.svg';
 
 class Attorney extends Component {
   static async getInitialProps(context) {
@@ -127,7 +124,7 @@ class Attorney extends Component {
   render() {
     const { attorneyProps } = this.props;
     return (
-      <Background style={{ paddingTop: "75.328px" }}>
+      <Background style={{ paddingTop: '75.328px' }}>
         <Container>
           <ContainerBackground>
             <ImageContainer>
@@ -138,7 +135,7 @@ class Attorney extends Component {
                     : vertLogo
                 }
               />
-              <p>Contact {attorneyProps[0].title.rendered.split(" ")[0]}</p>
+              <p>Contact {attorneyProps[0].title.rendered.split(' ')[0]}</p>
               <p>
                 <a href={`mailto:${attorneyProps[0].acf.email}`}>
                   {attorneyProps[0].acf.email}
@@ -148,13 +145,13 @@ class Attorney extends Component {
             <AttorneyDescription>
               <h1>{attorneyProps[0].title.rendered}</h1>
               <div
-                className='attorney-text'
+                className="attorney-text"
                 dangerouslySetInnerHTML={{
                   __html: attorneyProps[0].content.rendered,
                 }}
               />
             </AttorneyDescription>
-            {attorneyProps[0].slug === "jaime-s-duggan" ? (
+            {attorneyProps[0].slug === 'jaime-s-duggan' ? (
               <Images>
                 <img src={dbs} />
                 <img src={stateBar} />

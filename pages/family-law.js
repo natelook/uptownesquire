@@ -3,17 +3,15 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Scroll from 'react-scroll';
 import { Container } from '../components/styles/Tools';
-import { DarkBlue, MedBlue } from '../components/styles/Colors';
-import familyLaw from '../familyLaw.json';
 
 const familyImage = '/static/images/family.jpeg';
 
 const Background = styled.div`
-  background-color: ${DarkBlue};
+  background-color: ${props => props.theme.darkBlue};
 `;
 
 const ContainerBackground = styled.div`
-  background-color: #fff;
+  background-color: ${props => props.theme.light};
   padding-bottom: 50px;
 
   @media (max-width: 768px) {
@@ -112,7 +110,7 @@ const PracticeItem = styled.li`
   font-size: 24px;
   font-weight: 500;
   cursor: pointer;
-  color: ${props => (props.selected ? MedBlue : '#000')};
+  color: ${props => (props.selected ? props.theme.medBlue : props.theme.dark)};
 
   @media (max-width: 768px) {
     font-size: 20px;
@@ -126,7 +124,7 @@ const ContactLink = styled.div`
   display: flex;
   justify-content: center;
   a {
-    color: ${MedBlue};
+    color: ${props => props.theme.medBlue};
     text-decoration: none;
     font-size: 22px;
   }
@@ -153,7 +151,6 @@ const MaritalAgreements =
 class FamilyLaw extends Component {
   state = {
     selectedPractice: Divorce,
-    familyLaw,
     title: 'Divorce',
     animateClass: 'animated fadeIn',
   };

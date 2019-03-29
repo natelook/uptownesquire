@@ -1,14 +1,12 @@
 import styled from 'styled-components';
-import Layout from '../components/Layout';
 import { Container } from '../components/styles/Tools';
-import { DarkBlue, Blue } from '../components/styles/Colors';
 
 const Background = styled.div`
-  background-color: ${DarkBlue};
+  background-color: ${props => props.theme.darkBlue};
 `;
 
 const ContainerBackground = styled.div`
-  background-color: #fff;
+  background-color: ${props => props.theme.light};
   padding: 20px 40px;
 
   @media (max-width: 768px) {
@@ -16,7 +14,7 @@ const ContainerBackground = styled.div`
   }
 
   h1 {
-    color: ${Blue};
+    color: ${props => props.theme.blue};
   }
 
   h2 {

@@ -2,32 +2,24 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Spring } from 'react-spring';
-import ScrollAnimation from 'react-animate-on-scroll';
-import InViewMonitor from 'react-inview-monitor';
 import Div100vh from 'react-div-100vh';
 import { Container } from '../components/styles/Tools';
-import {
-  LightBlue,
-  DarkBlue,
-  Blue,
-  MedBlue,
-} from '../components/styles/Colors';
-import Layout from '../components/Layout';
+import { LightBlue, Blue, MedBlue } from '../components/styles/Colors';
 import Button from '../components/Button';
 
+// Pics
 const signing = '/static/images/header2.jpeg';
 const family = '/static/images/family.jpeg';
 const lgbtq = '/static/images/flag.jpg';
 const dallas = '/static/images/dallas.jpg';
 const hands = '/static/images/hands.jpeg';
-
-// New pics
 const circleHands = '/static/images/circle_hands.jpg';
 const redHeart = '/static/images/red_heart.jpg';
 const scalesJustice = 'static/images/scales_justice.jpg';
 
 const HomeContainer = styled.div`
   position: relative;
+  height: 100vh;
 `;
 
 const Heading = styled.div`
@@ -185,7 +177,7 @@ const AboutContainer = styled.div`
     margin: 0;
     padding-top: 50px;
     font-size: 50px;
-    color: ${DarkBlue};
+    color: ${props => props.theme.darkBlue};
     @media (max-height: 768px) {
       font-size: 40px;
     }

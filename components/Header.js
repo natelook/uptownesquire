@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Spring } from 'react-spring';
-import { Blue, Dark, Light, MedBlue, LightBlue } from './styles/Colors';
 import MobileNavList from './MobileNavList';
 
 const logo = '/static/images/logo.png';
@@ -25,13 +24,14 @@ const Nav = styled.div`
   z-index: 5;
   transition: 0.5s;
   a {
-    color: ${props => (props.scroll || props.home != '/' ? Dark : Light)};
+    color: ${props =>
+      props.scroll || props.home != '/' ? props.theme.dark : props.theme.light};
     text-decoration: none;
     font-weight: 400;
     position: relative;
 
     &:hover {
-      color: ${LightBlue};
+      color: ${props => props.theme.lightBlue};
     }
   }
 `;
@@ -92,7 +92,7 @@ const Patty = styled.span`
   width: 100%;
   height: 2px;
   background-color: ${props =>
-    props.scrolled || props.home != '/' ? '#000' : '#fff'};
+    props.scrolled || props.home != '/' ? props.theme.dark : props.theme.light};
   position: absolute;
   transition: 0.3s;
 
@@ -182,50 +182,50 @@ class Header extends Component {
           {props => (
             <Nav scroll={scrolled} home={this.props.page} style={props}>
               <ImageContainer scroll={scrolled} home={this.props.page}>
-                <Link href='/'>
+                <Link href="/">
                   <a>
                     <img
                       src={
                         scrolled || this.props.page != '/' ? logo : whiteLogo
                       }
-                      alt='Jamie Duggan Law Firm Logo'
+                      alt="Jamie Duggan Law Firm Logo"
                     />
                   </a>
                 </Link>
               </ImageContainer>
               <NavList>
                 <NavItem>
-                  <Link href='/'>
+                  <Link href="/">
                     <a>Home</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href='/attorneys'>
+                  <Link href="/attorneys">
                     <a>Attorneys & Staff</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href='/family-law'>
+                  <Link href="/family-law">
                     <a>Family Law</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href='/lgbtq-law'>
+                  <Link href="/lgbtq-law">
                     <a>LGBTQ Law</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href='/blog'>
+                  <Link href="/blog">
                     <a>Blog</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href='/contact'>
+                  <Link href="/contact">
                     <a>Contact</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <a href='tel:2144941647'>
+                  <a href="tel:2144941647">
                     <img
                       style={{ height: '25px', width: '25px' }}
                       src={
@@ -237,7 +237,7 @@ class Header extends Component {
                   </a>
                 </NavItem>
                 <NavItem>
-                  <a href='mailto:info@uptownesquire.com'>
+                  <a href="mailto:info@uptownesquire.com">
                     <img
                       style={{ height: '25px', width: '25px' }}
                       src={
