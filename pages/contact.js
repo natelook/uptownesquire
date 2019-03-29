@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import validator from 'validator';
+import AlertBox from '../components/AlertBox';
 import { Container } from '../components/styles/Tools';
 import { DarkBlue, Blue } from '../components/styles/Colors';
 import Button from '../components/Button';
@@ -24,13 +26,13 @@ const Heading = styled.div`
   background-position: 0 375px;
   border-top: none;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-repeat: no-repeat;
 
   @media (max-width: 414px) {
+    background-repeat: no-repeat;
     background-position: 0;
     height: 200px;
   }
@@ -39,7 +41,7 @@ const Heading = styled.div`
     color: #fff;
     margin-left: 20px;
     margin-top: 30px;
-    z-index: 3;
+    z-index: 4;
     position: relative;
     font-size: 50px;
   }
@@ -66,6 +68,7 @@ const Grid = styled.div`
 
 const FormContainer = styled.div`
   padding: 10px;
+  position: relative;
 `;
 
 const FormInput = styled.div`
@@ -154,7 +157,20 @@ const Bold = styled.span`
   font-weight: 500;
 `;
 
-const validationErrors = {};
+const ErrorsList = styled.ul`
+  color: #ff0033;
+`;
+
+const Success = styled.div`
+  background-color: pink;
+  position: absolute;
+  display: block;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+  top: ${props => (props.success ? '0px' : '-2000px')};
+`;
 
 class Contact extends Component {
   state = {
@@ -164,11 +180,40 @@ class Contact extends Component {
     phone: '',
     message: '',
     errors: {},
+    opacity: 0,
+    success: false,
+  };
+
+  validate = data => {
+    let errors = {};
+    if (!validator.isMobilePhone(data.phone)) {
+      errors.phone = 'Phone number is invalid.';
+    }
+    if (!validator.isEmail(data.email)) {
+      errors.email = 'Please enter a valid email.';
+    }
+
+    if (validator.isEmpty(data.firstName)) {
+      errors.firstName = 'First name is required.';
+    }
+    if (validator.isEmpty(data.lastName)) {
+      errors.lastName = 'Last name is required.';
+    }
+    if (validator.isEmpty(data.email)) {
+      errors.email = 'Email is required.';
+    }
+    if (validator.isEmpty(data.phone)) {
+      errors.phone = 'Phone number is required.';
+    }
+    if (validator.isEmpty(data.message)) {
+      errors.message = 'Please input a message.';
+    }
+    return { errors, isValid: Object.keys(errors).length === 0 };
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    const { firstName, lastName, email, phone, message, errors } = this.state;
+    const { firstName, lastName, email, phone, message } = this.state;
 
     const formData = {
       firstName: firstName,
@@ -178,10 +223,27 @@ class Contact extends Component {
       message: message,
     };
 
+    const { errors, isValid } = this.validate(formData);
+
+    if (!isValid) {
+      return this.setState({
+        errors,
+      });
+    }
+
     axios
       .post('/contact/submit', formData)
       .then(res => console.log(res))
       .catch(err => console.log(err));
+    this.setState({
+      opacity: 1,
+      success: true,
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      message: '',
+    });
   };
 
   handleChange = e => {
@@ -189,10 +251,27 @@ class Contact extends Component {
       [e.target.name]: e.target.value,
     });
   };
+
+  handleClose = () => {
+    this.setState({
+      success: false,
+    });
+  };
   render() {
-    const { firstName, lastName, email, phone, message, errors } = this.state;
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      message,
+      errors,
+      success,
+    } = this.state;
     return (
       <Background style={{ paddingTop: '75.328px' }}>
+        <AlertBox success={success} handleClick={this.handleClose}>
+          Message was sent!
+        </AlertBox>
         <Container>
           <ContainerBackground>
             <Grid>
@@ -262,6 +341,15 @@ class Contact extends Component {
                   <FormInput>
                     <Button>Submit</Button>
                   </FormInput>
+                  {Object.keys(errors).length != 0 ? (
+                    <ErrorsList>
+                      <li>{errors.firstName}</li>
+                      <li>{errors.lastName}</li>
+                      <li>{errors.email}</li>
+                      <li>{errors.phone}</li>
+                      <li>{errors.message}</li>
+                    </ErrorsList>
+                  ) : null}
                 </form>
               </FormContainer>
 
