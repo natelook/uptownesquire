@@ -21,6 +21,7 @@
     "nprogress": "^0.2.0",
     "react": "^16.7.0",
     "react-animate-on-scroll": "^2.1.5",
+    "react-div-100vh": "^0.3.2",
     "react-dom": "^16.7.0",
     "react-inview-monitor": "^2.2.1",
     "react-pose": "^4.0.6",

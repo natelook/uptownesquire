@@ -83,21 +83,20 @@ const Bold = styled.span`
 `;
 
 class Footer extends Component {
-  state = {
-    attorneys: [],
-  };
-  async componentWillMount() {
-    const attorneysRes = await fetch(
-      `${Config.apiUrl}/wp-json/wp/v2/attorneys`,
-    );
-    const attorneys = await attorneysRes.json();
-    this.setState({
-      attorneys,
-    });
-  }
+  // state = {
+  //   attorneys: [],
+  // };
+  // async componentWillMount() {
+  //   const attorneysRes = await fetch(
+  //     `${Config.apiUrl}/wp-json/wp/v2/attorneys`,
+  //   );
+  //   const attorneys = await attorneysRes.json();
+  //   this.setState({
+  //     attorneys,
+  //   });
+  // }
 
   render() {
-    const { attorneys } = this.state;
     return (
       <FooterContainer>
         <Container>
