@@ -6,6 +6,7 @@ import Scroll from 'react-scroll';
 import { Container } from '../components/styles/Tools';
 
 const circleHands = '/static/images/circle_hands.jpg';
+const balloon = '/static/images/balloons.jpg';
 
 const Background = styled.div`
   background-color: ${props => props.theme.darkBlue};
@@ -42,10 +43,10 @@ const Heading = styled.div`
   grid-column-start: 1;
   grid-column-end: 3;
   position: relative;
-  height: 300px;
-  background-image: url(${circleHands});
+  height: 400px;
+  background-image: url(${balloon});
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
   z-index: 1;
   display: flex;
@@ -62,7 +63,7 @@ const Heading = styled.div`
 `;
 
 const HeadingOverlay = styled.div`
-  background-color: rgba(8, 92, 142, 0.5);
+  background-color: rgba(8, 92, 142, 0.3);
   height: 100%;
   width: 100%;
   position: absolute;
@@ -150,9 +151,9 @@ const Transgender =
 const NameChanges =
   '<p>For a variety of reasons, both personal and legal, many people choose to change their name. Our attorneys can help guide you through the process of obtaining a legal court order to change your name and/or correct your gender marker. Navigating the legal process and court system is not always an easy task and can be highly exhausting and stressful to attempt without the help of an attorney. The Duggan Law Firm, PC can help to provide as smooth and expeditious a process as possible.</p>';
 const SameSexDivorce =
-  '<p>In the landmark decision in Obergefell v. Hodges, the United States Supreme Court brought marriage equality to all States, including Texas. The process of dissolving the marriage relationship is now the same for all people in Texas. However, complex and unique legal issues still exist for LGBT couples facing divorce including those related to property division and parental rights. Our office has extensive experience representing LGBT clients facing divorce and custody disputes. We actively work to maintain our knowledge and focus on legal issues facing the LGBT community in order to ensure the best possible legal representation for our clients.</p><p>To avoid being misinformed about the laws relating to your divorce or custody dispute, it is imperative to seek guidance from the legal professionals at Duggan Law Firm, PC who can provide important information about your specific circumstances. As the laws continue to change and evolve in this area, the attorneys at Duggan Law Firm, PC are committed to staying apprised of the various changes affecting their clients.</p>';
+  '<p>In the landmark decision in Obergefell v. Hodges, the United States Supreme Court brought marriage equality to all States, including Texas. The process of dissolving the marriage relationship is now the same for all people in Texas. However, complex and unique legal issues still exist for LGBTQ couples facing divorce including those related to property division and parental rights. Our office has extensive experience representing LGBT clients facing divorce and custody disputes. We actively work to maintain our knowledge and focus on legal issues facing the LGBT community in order to ensure the best possible legal representation for our clients.</p><p>To avoid being misinformed about the laws relating to your divorce or custody dispute, it is imperative to seek guidance from the legal professionals at Duggan Law Firm, PC who can provide important information about your specific circumstances. As the laws continue to change and evolve in this area, the attorneys at Duggan Law Firm, PC are committed to staying apprised of the various changes affecting their clients.</p>';
 const SecondParentAdoption =
-  '<p>Even with the Supreme Court decision in Obergefell v. Hodges and the realization of marriage equality for all, questions regarding the rights and protections of LGBT families remain unanswered. Without specific legal protections and recognition of LGBT families and their parental rights, second parent adoptions are recommended and necessary to ensure the rights of LGBT parents. The attorneys at Duggan Law Firm, PC can guide you and your family through the specifics of your situation and provide the guidance and legal support necessary to complete a second parent adoption. </p>';
+  '<p>Even with the Supreme Court decision in Obergefell v. Hodges and the realization of marriage equality for all, questions regarding the rights and protections of LGBT families remain unanswered. Without specific legal protections and recognition of LGBTQ families and their parental rights, second parent adoptions are recommended and necessary to ensure the rights of LGBTQ parents. The attorneys at Duggan Law Firm, PC can guide you and your family through the specifics of your situation and provide the guidance and legal support necessary to complete a second parent adoption. </p>';
 const NonBiologicalParents =
   '<p>Often times, the most difficult family law issue people face concerns the ability to maintain a presence in the life of a child. Individuals who provide long-term care to children, act as a parental figure or are even treated as a parent are not always afforded the legal ability to maintain a presence in that child’s life. Our law firm provides zealous advocacy to represent clients who wish to continue a relationship with a child in their life when they’ve met certain legal requirements. Many of these cases require immediate action to avoid losing opportunities to assert these rights, therefore, legal advice should be sought without delay.</p>';
 
@@ -194,9 +195,9 @@ class LgbtqLaw extends Component {
                         part of the LGBTQ community often face unique challenges
                         in dealing with legal issues. Our attorneys are
                         dedicated to approaching each client and each legal
-                        situation with the utmost case, respect and advocacy.
+                        situation with the utmost care, respect and advocacy.
                         Duggan Law Firm, PC is committed to staying apprised of
-                        evolving legal trends and laws specific to the LGBT
+                        evolving legal trends and laws specific to the LGBTQ
                         community.
                       </p>
                     </Bio>
@@ -209,7 +210,7 @@ class LgbtqLaw extends Component {
                       />
                       <ContactLink>
                         <Link href="/contact">
-                          <a>Conact us about {title.toLowerCase()}.</a>
+                          <a>Contact us about {title.toLowerCase()}.</a>
                         </Link>
                       </ContactLink>
                     </OpenPractice>

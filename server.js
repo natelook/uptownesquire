@@ -94,6 +94,6 @@ nextApp.prepare().then(() => {
 
   server.listen(port, err => {
     if (err) throw err;
-    console.log('Listening on http://localhost:${port}');
+    console.log(`Listening on http://localhost:${port}`);
   });
 });
