@@ -1,1 +1,1 @@
-export const Config = { apiUrl: 'http://api.lookdigital.us' };
+export const Config = { apiUrl: 'https://api.uptownesquire.com' };
