@@ -129,7 +129,7 @@ const Slider = styled.div`
 
 const NavItem = styled.li`
   margin: 0 15px;
-  font-size: 21px;
+  font-size: 23px;
 
   @media (max-width: 1024px) {
     font-size: 18px;
@@ -141,10 +141,29 @@ const NavItem = styled.li`
   }
 `;
 
+const PhoneNumber = styled.div`
+  background-color: ${props => props.theme.blue};
+  color: ${props => props.theme.light};
+  /* display: ${props => (props.visible ? 'block' : 'hidden')}; */
+  position: absolute;
+  width: 200px;
+  right: ${props => (props.visible ? '-25px' : '-100px')};
+  text-align: center;
+  border-radius: 5px;
+  transition: 300ms;
+  opacity: ${props => (props.visible ? 1 : 0)};
+
+  p {
+    padding: 4px;
+    margin: 4px;
+  }
+`;
+
 class Header extends Component {
   state = {
     scrolled: false,
     open: false,
+    numberOpen: false,
   };
 
   componentWIllMount() {
@@ -156,6 +175,13 @@ class Header extends Component {
   openNav = () => {
     const { open } = this.state;
     open ? this.setState({ open: false }) : this.setState({ open: true });
+  };
+
+  openPhoneNumber = () => {
+    const { numberOpen } = this.state;
+    numberOpen
+      ? this.setState({ numberOpen: false })
+      : this.setState({ numberOpen: true });
   };
 
   listenScrollEvent = e => {
@@ -171,7 +197,7 @@ class Header extends Component {
   }
 
   render() {
-    const { scrolled, notHome, open } = this.state;
+    const { scrolled, notHome, open, numberOpen } = this.state;
 
     return (
       <div>
@@ -225,16 +251,18 @@ class Header extends Component {
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <a href="tel:2144941647">
-                    <img
-                      style={{ height: '25px', width: '25px' }}
-                      src={
-                        scrolled || this.props.page != '/'
-                          ? '/static/images/phone.png'
-                          : '/static/images/phone-white.png'
-                      }
-                    />
-                  </a>
+                  <img
+                    style={{ height: '25px', width: '25px' }}
+                    src={
+                      scrolled || this.props.page != '/'
+                        ? '/static/images/phone.png'
+                        : '/static/images/phone-white.png'
+                    }
+                    onClick={this.openPhoneNumber}
+                  />
+                  <PhoneNumber visible={numberOpen}>
+                    <p>214-494-1647</p>
+                  </PhoneNumber>
                 </NavItem>
                 <NavItem>
                   <a href="mailto:info@uptownesquire.com">

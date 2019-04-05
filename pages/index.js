@@ -16,6 +16,11 @@ const hands = '/static/images/hands.jpeg';
 const circleHands = '/static/images/circle_hands.jpg';
 const redHeart = '/static/images/red_heart.jpg';
 const scalesJustice = 'static/images/scales_justice.jpg';
+const balloons = '/static/images/balloons.jpg';
+
+// Lighter Pics
+const redHeartLighter = '/static/images/red_heart_lighter.jpg';
+const circleHandsLighter = '/static/images/circle_hands_lighter.jpg';
 
 const HomeContainer = styled.div`
   position: relative;
@@ -27,8 +32,8 @@ const Heading = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  /* justify-content: center; */
+  text-align: left;
   color: white;
   background-image: url(${scalesJustice});
   background-repeat: no-repeat;
@@ -102,6 +107,8 @@ const Practice = styled.div`
   background-position: center center;
   position: relative;
   z-index: 1;
+  border: 2px solid #fff;
+  color: ${props => props.theme.blue};
 
   @media (max-width: 1024px) {
     padding: 20px;
@@ -172,6 +179,7 @@ const AboutContainer = styled.div`
   background-size: cover;
   position: relative;
   z-index: 1;
+  color: ${props => props.theme.dark};
 
   h2 {
     margin: 0;
@@ -272,7 +280,7 @@ class Home extends Component {
               </Container>
             </Heading>
             <Grid>
-              <Practice image={family}>
+              <Practice image={redHeartLighter}>
                 <div style={{ zIndex: 20 }}>
                   <Spring
                     from={{ opacity: 0 }}
@@ -287,7 +295,7 @@ class Home extends Component {
                         <Link href="family-law">
                           <a>
                             <Button
-                              textColor="#fff"
+                              textColor="#085c8e"
                               marginTop="20px"
                               element={'a'}>
                               Learn More
@@ -298,9 +306,8 @@ class Home extends Component {
                     )}
                   </Spring>
                 </div>
-                <GridOverlay overlayColor={'rgba(8,92,142,.50)'} />
               </Practice>
-              <Practice image={circleHands}>
+              <Practice image={circleHandsLighter}>
                 <div style={{ zIndex: 20 }}>
                   <Spring
                     from={{ opacity: 0 }}
@@ -316,7 +323,7 @@ class Home extends Component {
                         <Link href="/lgbtq-law">
                           <a>
                             <Button
-                              textColor="#fff"
+                              textColor="#085c8e"
                               marginTop="20px"
                               element={'a'}>
                               Learn More
@@ -327,7 +334,6 @@ class Home extends Component {
                     )}
                   </Spring>
                 </div>
-                <GridOverlay overlayColor={'rgba(8,92,142,.50)'} />
               </Practice>
             </Grid>
           </HomeContainer>

@@ -5,6 +5,8 @@ import Scroll from 'react-scroll';
 import { Container } from '../components/styles/Tools';
 
 const familyImage = '/static/images/family.jpeg';
+const redHeart = '/static/images/red_heart.jpg';
+const redHeartLight = '/static/images/red_heart_lighter.jpg';
 
 const Background = styled.div`
   background-color: ${props => props.theme.darkBlue};
@@ -43,11 +45,12 @@ const Heading = styled.div`
   grid-column-start: 1;
   grid-column-end: 3;
   position: relative;
-  height: 300px;
-  background-image: url(${familyImage});
+  height: 400px;
+  background-image: url(${redHeart});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
   z-index: 1;
   display: flex;
   align-items: center;
@@ -62,7 +65,7 @@ const Heading = styled.div`
 `;
 
 const HeadingOverlay = styled.div`
-  background-color: rgba(8, 92, 142, 0.5);
+  background-color: rgba(8, 92, 142, 0.2);
   height: 100%;
   width: 100%;
   position: absolute;
@@ -182,7 +185,7 @@ class FamilyLaw extends Component {
                 <div dangerouslySetInnerHTML={{ __html: selectedPractice }} />
                 <ContactLink>
                   <Link href="/contact">
-                    <a>Conact us about {title.toLowerCase()}.</a>
+                    <a>Contact us about {title.toLowerCase()}.</a>
                   </Link>
                 </ContactLink>
               </OpenPractice>
