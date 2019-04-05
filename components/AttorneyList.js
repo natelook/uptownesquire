@@ -55,7 +55,8 @@ class AttorneyList extends Component {
                     name={attorney.title.rendered}
                     image={
                       attorney.featured_media
-                        ? attorney.acf.attorney_image.url
+                        ? attorney.better_featured_image.media_details.sizes
+                            .medium_large.source_url
                         : vertLogo
                     }
                   />

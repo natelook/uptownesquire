@@ -130,15 +130,20 @@ class Attorney extends Component {
             <ImageContainer>
               <AttorneyImage
                 image={
-                  attorneyProps[0].acf.attorney_image
-                    ? attorneyProps[0].acf.attorney_image.url
+                  attorneyProps[0].featured_media
+                    ? attorneyProps[0].better_featured_image.media_details.sizes
+                        .medium_large.source_url
                     : vertLogo
                 }
               />
               <p>Contact {attorneyProps[0].title.rendered.split(' ')[0]}</p>
               <p>
-                <a href={`mailto:${attorneyProps[0].acf.email}`}>
-                  {attorneyProps[0].acf.email}
+                <a
+                  href={`mailto:${
+                    attorneyProps[0].title.rendered.split(' ')[0]
+                  }@uptownesquire.com`}>
+                  {attorneyProps[0].title.rendered.split(' ')[0]}
+                  @uptownesquire.com
                 </a>
               </p>
             </ImageContainer>
