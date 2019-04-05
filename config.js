@@ -1,1 +1,1 @@
-export const Config = { apiUrl: 'https://api.natelook.tech' };
+export const Config = { apiUrl: 'http://api.lookdigital.us' };

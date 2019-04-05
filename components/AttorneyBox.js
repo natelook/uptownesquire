@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Card = styled.div`
   height: 500px;
@@ -12,12 +12,12 @@ const Card = styled.div`
   margin: 0 auto;
   border-radius: 10px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     width: 200px;
     height: 400px;
   }
 
-  @media (max-width: 414px) {
+  @media (max-width: 768px) {
     width: 300px;
     height: 400px;
   }
