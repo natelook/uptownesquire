@@ -73,7 +73,7 @@ nextApp.prepare().then(() => {
         from_email: req.body.email,
         from_phone: req.body.phone,
         from_message: req.body.message,
-        referring_url: 'http://localhost:3000/contact',
+        referring_url: 'https://uptownesquire.com/contact',
         from_source: 'Uptown Esquire Contact Page',
       },
       inbox_lead_token: 'U2rtMWhgL-MqhXbrL-If1w',

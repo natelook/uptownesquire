@@ -203,24 +203,44 @@ class Contact extends Component {
     e.preventDefault();
     const { firstName, lastName, email, phone, message } = this.state;
 
+    // const formData = {
+    //   firstName: firstName,
+    //   lastName: lastName,
+    //   email: email,
+    //   phone: phone,
+    //   message: message,
+    // };
+
+    // const { errors, isValid } = this.validate(formData);
+
+    // if (!isValid) {
+    //   return this.setState({
+    //     errors,
+    //   });
+    // }
+
     const formData = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      phone: phone,
-      message: message,
+      inbox_lead: {
+        from_first: firstName,
+        from_last: lastName,
+        from_email: email,
+        from_phone: phone,
+        from_message: message,
+        referring_url: 'http://uptownesquire.com/contact',
+        from_source: 'Uptown Esquire Contact Page',
+      },
+      inbox_lead_token: 'U2rtMWhgL-MqhXbrL-If1w',
     };
 
-    const { errors, isValid } = this.validate(formData);
-
-    if (!isValid) {
-      return this.setState({
-        errors,
-      });
-    }
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    };
 
     axios
-      .post('/contact/submit', formData)
+      .post('http://app.lexicata.com/inbox_leads', formData, config)
       .then(res => console.log(res))
       .catch(err => console.log(err));
     this.setState({
