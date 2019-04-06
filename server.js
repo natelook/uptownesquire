@@ -87,7 +87,7 @@ nextApp.prepare().then(() => {
     };
 
     axios
-      .post('http://app.lexicata.com/inbox_leads', formData, config)
+      .post('https://app.lexicata.com/inbox_leads', formData, config)
       .then(form => res.json(form))
       .catch(err => console.log(err));
   });
