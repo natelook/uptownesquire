@@ -210,7 +210,7 @@ class Contact extends Component {
         from_email: email,
         from_phone: phone,
         from_message: message,
-        referring_url: 'Test',
+        referring_url: 'https://www.uptownesquire.com/contact',
         from_source: 'Uptown Esquire Contact Page',
       },
       inbox_lead_token: 'U2rtMWhgL-MqhXbrL-If1w',
