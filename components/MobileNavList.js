@@ -15,36 +15,66 @@ const NavItem = styled.li`
   margin: 20px 0;
 `;
 
-const MobileNavList = () => (
+const MobileNavList = props => (
   <NavList>
     <NavItem>
       <Link href="/">
-        <a>Home</a>
+        <a
+          onClick={() => {
+            props.toggle();
+          }}>
+          Home
+        </a>
       </Link>
     </NavItem>
     <NavItem>
       <Link href="/attorneys">
-        <a>Attorneys & Staff</a>
+        <a
+          onClick={() => {
+            props.toggle();
+          }}>
+          Attorneys & Staff
+        </a>
       </Link>
     </NavItem>
     <NavItem>
       <Link href="/family-law">
-        <a>Family Law</a>
+        <a
+          onClick={() => {
+            props.toggle();
+          }}>
+          Family Law
+        </a>
       </Link>
     </NavItem>
     <NavItem>
       <Link href="/lgbtq-law">
-        <a>LGBTQ Law</a>
+        <a
+          onClick={() => {
+            props.toggle();
+          }}>
+          LGBTQ Law
+        </a>
       </Link>
     </NavItem>
     <NavItem>
       <Link href="/blog">
-        <a>Blog</a>
+        <a
+          onClick={() => {
+            props.toggle();
+          }}>
+          Blog
+        </a>
       </Link>
     </NavItem>
     <NavItem>
       <Link href="/contact">
-        <a>Contact</a>
+        <a
+          onClick={() => {
+            props.toggle();
+          }}>
+          Contact
+        </a>
       </Link>
     </NavItem>
     <NavItem>

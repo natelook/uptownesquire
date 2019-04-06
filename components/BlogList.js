@@ -6,46 +6,31 @@ import { Spring } from 'react-spring';
 import LoadingRing from '../components/LoadingRing';
 import { Config } from '../config';
 
+const logo = '/static/images/logo.png';
+
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 33% 33% 33%;
-  align-items: center;
-  justify-content: center;
-  grid-gap: 10px;
-
-  @media (max-width: 414px) {
-    grid-template-columns: 100%;
+  grid-template-columns: 25% 75%;
+  h3 {
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 `;
 
-const BlogItem = styled.div`
+const BlogContent = styled.div`
+  margin-left: 20px;
+`;
+
+const BlogImage = styled.div`
   width: 100%;
-  height: 250px;
-  background-image: url(${props => props.background});
-  background-size: cover;
-  background-repeat: no-repeat;
+  height: 150px;
+  background-image: url(${props => props.image});
   background-position: center;
-  position: relative;
+  background-size: auto;
+  background-repeat: no-repeat;
 `;
 
-const BlogTitle = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px 0;
-  color: #fff;
-  height: 100px;
-  font-size: 18px;
-
-  p {
-    padding: 0 20px;
-  }
-`;
+const BlogTitle = styled.div``;
 
 class Blog extends Component {
   state = {
@@ -76,22 +61,34 @@ class Blog extends Component {
             {props => (
               <div style={props}>
                 <h1>Blog Posts</h1>
-                <Grid>
-                  {blog.map(post => (
-                    <Link
-                      key={post.id}
-                      as={`/post/${post.slug}`}
-                      href={`/post?slug=${post.slug}&apiRoute=post`}>
-                      <a>
-                        <BlogItem background="/static/images/family.jpeg">
-                          <BlogTitle>
-                            <p>{post.title.rendered}</p>
-                          </BlogTitle>
-                        </BlogItem>
-                      </a>
-                    </Link>
-                  ))}
-                </Grid>
+                {blog.map(post => (
+                  <Grid key={post.id}>
+                    <h3>{post.title.rendered}</h3>
+                    <BlogImage
+                      image={
+                        post.better_featured_image
+                          ? post.better_featured_image.media_details.sizes
+                              .medium_large.source_url
+                          : logo
+                      }
+                    />
+                    <BlogContent>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: post.content.rendered.split('</p>')[0],
+                        }}
+                      />
+                      <div style={{ textAlign: 'center' }}>
+                        <Link
+                          key={post.id}
+                          as={`/post/${post.slug}`}
+                          href={`/post?slug=${post.slug}&apiRoute=post`}>
+                          <a>Read more</a>
+                        </Link>
+                      </div>
+                    </BlogContent>
+                  </Grid>
+                ))}
               </div>
             )}
           </Spring>

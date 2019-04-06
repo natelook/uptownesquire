@@ -14,7 +14,13 @@ const Grid = styled.div`
   grid-template-columns: 25% 25% 25% 25%;
   padding-top: 30px;
 
+  @media (max-width: 768px) {
+    grid-template-columns: 50% 50%;
+  }
+
   @media (max-width: 414px) {
+    grid-template-columns: 100%;
+
     text-align: center;
   }
 `;
@@ -53,26 +59,16 @@ const List = styled.div`
   }
 `;
 
-const ListyList = styled.div`
-  @media (max-width: 414px) {
-    display: none;
-  }
-`;
+const ListyList = styled.div``;
 
 const BottomGrid = styled.div`
   display: flex;
-  justify-content: center;
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 5;
   align-items: center;
-
-  &:first-child {
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
-
-  &:last-child {
-    grid-column-start: 3;
-    grid-column-end: 5;
-  }
+  justify-content: center;
+  margin-bottom: 50px;
 `;
 
 const Bold = styled.span`
@@ -193,7 +189,6 @@ class Footer extends Component {
             </List>
           </Grid>
           <Grid>
-            <BottomGrid>&copy; 2019 Duggan Law Firm P.C.</BottomGrid>
             <BottomGrid>
               <List>
                 <ul>
@@ -216,6 +211,7 @@ class Footer extends Component {
                 </ul>
               </List>
             </BottomGrid>
+            <BottomGrid>&copy; 2019 Duggan Law Firm P.C.</BottomGrid>
           </Grid>
         </Container>
       </FooterContainer>

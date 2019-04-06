@@ -49,7 +49,7 @@ class Post extends Component {
               <h2>{postProps[0].title.rendered}</h2>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: postProps[0].content.rendered,
+                  __html: postProps[0].content.rendered.split('</p>'),
                 }}
               />
             </div>

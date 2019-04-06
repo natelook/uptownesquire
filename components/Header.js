@@ -21,7 +21,7 @@ const Nav = styled.div`
   color: #000;
   box-shadow: ${props =>
     props.scroll || props.home != '/' ? '0px -20px 50px 6px #000' : null};
-  z-index: 5;
+  z-index: 10;
   transition: 0.5s;
   a {
     color: ${props =>
@@ -74,13 +74,14 @@ const NavList = styled.ul`
 
 const Burger = styled.div`
   display: none;
-  position: absolute;
+  position: fixed;
   height: 40px;
   width: 40px;
   right: 20px;
   align-items: center;
   justify-content: center;
-  z-index: 15;
+  z-index: 10;
+  transition: 300ms;
 
   @media (max-width: 768px) {
     display: flex;
@@ -116,10 +117,10 @@ const Slider = styled.div`
   align-items: center;
   position: fixed;
   height: 100vh;
-  width: 300px;
-  background-color: rgba(50, 50, 50, 0.9);
-  z-index: 5;
-  right: ${props => (props.open ? '0' : '-300px')};
+  width: 100%;
+  background-color: ${props => props.theme.darkBlue};
+  z-index: 9;
+  right: ${props => (props.open ? '0' : '-2000px')};
   transition: 0.5s;
 
   @media (max-width: 768px) {
@@ -159,6 +160,11 @@ const PhoneNumber = styled.div`
   }
 `;
 
+const FakeBar = styled.div`
+  height: 100px;
+  position: fixed;
+`;
+
 class Header extends Component {
   state = {
     scrolled: false,
@@ -175,6 +181,7 @@ class Header extends Component {
   openNav = () => {
     const { open } = this.state;
     open ? this.setState({ open: false }) : this.setState({ open: true });
+    console.log('Hello');
   };
 
   openPhoneNumber = () => {
@@ -202,7 +209,7 @@ class Header extends Component {
     return (
       <div>
         <Slider open={open}>
-          <MobileNavList />
+          <MobileNavList toggle={this.openNav} />
         </Slider>
         <Spring from={{ top: '-200px' }} to={{ top: 0 }} delay={700}>
           {props => (
@@ -220,7 +227,7 @@ class Header extends Component {
                 </Link>
               </ImageContainer>
               <NavList>
-                <NavItem>
+                <NavItem onClick={this.openNav}>
                   <Link href="/">
                     <a>Home</a>
                   </Link>
@@ -277,7 +284,10 @@ class Header extends Component {
                   </a>
                 </NavItem>
               </NavList>
-              <Burger onClick={this.openNav}>
+              <Burger
+                onClick={this.openNav}
+                scrolled={scrolled}
+                home={this.props.page}>
                 <Patty scrolled={scrolled} home={this.props.page} open={open} />
                 <Patty scrolled={scrolled} home={this.props.page} open={open} />
                 <Patty scrolled={scrolled} home={this.props.page} open={open} />
