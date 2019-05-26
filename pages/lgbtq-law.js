@@ -151,9 +151,9 @@ const Transgender =
 const NameChanges =
   '<p>For a variety of reasons, both personal and legal, many people choose to change their name. Our attorneys can help guide you through the process of obtaining a legal court order to change your name and/or correct your gender marker. Navigating the legal process and court system is not always an easy task and can be highly exhausting and stressful to attempt without the help of an attorney. The Duggan Law Firm, PC can help to provide as smooth and expeditious a process as possible.</p>';
 const SameSexDivorce =
-  '<p>In the landmark decision in Obergefell v. Hodges, the United States Supreme Court brought marriage equality to all States, including Texas. The process of dissolving the marriage relationship is now the same for all people in Texas. However, complex and unique legal issues still exist for LGBTQ couples facing divorce including those related to property division and parental rights. Our office has extensive experience representing LGBT clients facing divorce and custody disputes. We actively work to maintain our knowledge and focus on legal issues facing the LGBT community in order to ensure the best possible legal representation for our clients.</p><p>To avoid being misinformed about the laws relating to your divorce or custody dispute, it is imperative to seek guidance from the legal professionals at Duggan Law Firm, PC who can provide important information about your specific circumstances. As the laws continue to change and evolve in this area, the attorneys at Duggan Law Firm, PC are committed to staying apprised of the various changes affecting their clients.</p>';
+  '<p>In the landmark decision in Obergefell v. Hodges, the United States Supreme Court brought marriage equality to all States, including Texas. The process of dissolving the marriage relationship is now the same for all people in Texas. However, complex and unique legal issues still exist for LGBTQ couples facing divorce including those related to property division and parental rights. Our office has extensive experience representing LGBTQ clients facing divorce and custody disputes. We actively work to maintain our knowledge and focus on legal issues facing the LGBTQ community in order to ensure the best possible legal representation for our clients.</p><p>To avoid being misinformed about the laws relating to your divorce or custody dispute, it is imperative to seek guidance from the legal professionals at Duggan Law Firm, PC who can provide important information about your specific circumstances. As the laws continue to change and evolve in this area, the attorneys at Duggan Law Firm, PC are committed to staying apprised of the various changes affecting their clients.</p>';
 const SecondParentAdoption =
-  '<p>Even with the Supreme Court decision in Obergefell v. Hodges and the realization of marriage equality for all, questions regarding the rights and protections of LGBT families remain unanswered. Without specific legal protections and recognition of LGBTQ families and their parental rights, second parent adoptions are recommended and necessary to ensure the rights of LGBTQ parents. The attorneys at Duggan Law Firm, PC can guide you and your family through the specifics of your situation and provide the guidance and legal support necessary to complete a second parent adoption. </p>';
+  '<p>Even with the Supreme Court decision in Obergefell v. Hodges and the realization of marriage equality for all, questions regarding the rights and protections of LGBTQ families remain unanswered. Without specific legal protections and recognition of LGBTQ families and their parental rights, second parent adoptions are recommended and necessary to ensure the rights of LGBTQ parents. The attorneys at Duggan Law Firm, PC can guide you and your family through the specifics of your situation and provide the guidance and legal support necessary to complete a second parent adoption. </p>';
 const NonBiologicalParents =
   '<p>Often times, the most difficult family law issue people face concerns the ability to maintain a presence in the life of a child. Individuals who provide long-term care to children, act as a parental figure or are even treated as a parent are not always afforded the legal ability to maintain a presence in that child’s life. Our law firm provides zealous advocacy to represent clients who wish to continue a relationship with a child in their life when they’ve met certain legal requirements. Many of these cases require immediate action to avoid losing opportunities to assert these rights, therefore, legal advice should be sought without delay.</p>';
 
@@ -179,11 +179,12 @@ class LgbtqLaw extends Component {
             <Spring
               from={{ opacity: 0 }}
               to={{ opacity: 1 }}
-              config={{ duration: 500 }}>
+              config={{ duration: 500 }}
+            >
               {props => (
                 <div style={props}>
                   <Grid>
-                    <Heading id="area-title">
+                    <Heading id='area-title'>
                       <h1>LGBTQ Law</h1>
                       <HeadingOverlay />
                     </Heading>
@@ -209,7 +210,7 @@ class LgbtqLaw extends Component {
                         }}
                       />
                       <ContactLink>
-                        <Link href="/contact">
+                        <Link href='/contact'>
                           <a>Contact us about {title.toLowerCase()}.</a>
                         </Link>
                       </ContactLink>
@@ -227,14 +228,16 @@ class LgbtqLaw extends Component {
                             }
                             selected={
                               this.state.title == 'Transgender Legal Concerns'
-                            }>
+                            }
+                          >
                             Transgender Legal Concerns
                           </PracticeItem>
                           <PracticeItem
                             onClick={() =>
                               this.selectPractice(NameChanges, 'Name Changes')
                             }
-                            selected={this.state.title == 'Name Changes'}>
+                            selected={this.state.title == 'Name Changes'}
+                          >
                             Name Changes
                           </PracticeItem>
                           <PracticeItem
@@ -244,7 +247,8 @@ class LgbtqLaw extends Component {
                                 'Same Sex Divorce',
                               )
                             }
-                            selected={this.state.title == 'Same Sex Divorce'}>
+                            selected={this.state.title == 'Same Sex Divorce'}
+                          >
                             Same Sex Divorce & Custody
                           </PracticeItem>
                           <PracticeItem
@@ -256,7 +260,8 @@ class LgbtqLaw extends Component {
                             }
                             selected={
                               this.state.title == 'Second Parent Adoption'
-                            }>
+                            }
+                          >
                             Second Parent Adoption
                           </PracticeItem>
                           <PracticeItem
@@ -269,7 +274,8 @@ class LgbtqLaw extends Component {
                             selected={
                               this.state.title ==
                               'Non-biological Parental Rights'
-                            }>
+                            }
+                          >
                             Non-biological Parental Rights
                           </PracticeItem>
                         </PracticeUl>
