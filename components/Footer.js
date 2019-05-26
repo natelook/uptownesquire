@@ -100,17 +100,17 @@ class Footer extends Component {
                 <ListyList>
                   <ul>
                     <li>
-                      <Link href="/">
+                      <Link href='/'>
                         <a>Home</a>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/disclaimer">
+                      <Link href='/disclaimer'>
                         <a>Disclaimer</a>
                       </Link>
                     </li>
                     <li>
-                      <a href="https://secure.lawpay.com/pages/dnlawpc/operating">
+                      <a href='https://secure.lawpay.com/pages/dnlawpc/operating'>
                         Make a Payment
                       </a>
                     </li>
@@ -125,23 +125,26 @@ class Footer extends Component {
                   <ul>
                     <li>
                       <Link
-                        as="/attorneys/jaime-s-duggan"
-                        href="/attorney?slug=jaime-s-duggan">
+                        as='/attorney/jaime-s-duggan'
+                        href='/attorney?slug=jaime-s-duggan'
+                      >
                         <a>Jaime S. Duggan</a>
                       </Link>
                     </li>
                     <li>
                       <Link
-                        as="/attorneys/kourtney-l-parker"
-                        href="/attorney?slug=kourtney-l-parker">
+                        as='/attorney/kourtney-l-parker'
+                        href='/attorney?slug=kourtney-l-parker'
+                      >
                         <a>Kourtney L. Parker</a>
                       </Link>
                     </li>
 
                     <li>
                       <Link
-                        as="/attorneys/olivia-lindsey"
-                        href="/attorney?slug=olivia-lindsey">
+                        as='/attorney/olivia-lindsey'
+                        href='/attorney?slug=olivia-lindsey'
+                      >
                         <a>Olivia Lindsey</a>
                       </Link>
                     </li>
@@ -155,12 +158,12 @@ class Footer extends Component {
                 <ListyList>
                   <ul>
                     <li>
-                      <Link href="/family-law">
+                      <Link href='/family-law'>
                         <a>Family Law</a>
                       </Link>
                     </li>
                     <li>
-                      <Link href="lgbtq-law">
+                      <Link href='/lgbtq-law'>
                         <a>LGBTQ Law</a>
                       </Link>
                     </li>
@@ -174,12 +177,12 @@ class Footer extends Component {
                 <ListyList>
                   <ul>
                     <li>
-                      <Link href="/contact">
+                      <Link href='/contact'>
                         <a>Contact</a>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/blog">
+                      <Link href='/blog'>
                         <a>Blog</a>
                       </Link>
                     </li>
@@ -204,7 +207,7 @@ class Footer extends Component {
                   </li>
                   <li>
                     <Bold>Email: </Bold>
-                    <a href="mailto:info@uptownesquire.com">
+                    <a href='mailto:info@uptownesquire.com'>
                       info@uptownesquire.com
                     </a>
                   </li>
