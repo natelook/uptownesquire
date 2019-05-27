@@ -25,6 +25,10 @@ const circleHandsLighter = '/static/images/circle_hands_lighter.jpg';
 const HomeContainer = styled.div`
   position: relative;
   height: 100vh;
+
+  @media (max-width: 812px) and (max-height: 375px) {
+    height: 200vh;
+  }
 `;
 
 const Heading = styled.div`
@@ -82,6 +86,12 @@ const Grid = styled.div`
   display: grid;
   bottom: 0;
   grid-template-columns: 50% 50%;
+
+  /* iPhone X  */
+  @media (max-width: 812px) and (max-height: 375px) {
+    grid-template-columns: 100%;
+  }
+
   @media screen and (max-width: 768px) {
     grid-template-columns: 100%;
   }
@@ -265,7 +275,8 @@ class Home extends Component {
                 <Spring
                   from={{ opacity: 0, marginLeft: -200 }}
                   to={{ opacity: 1, marginLeft: 0 }}
-                  config={{ duration: 500, delay: 0 }}>
+                  config={{ duration: 500, delay: 0 }}
+                >
                   {props => (
                     <div style={props}>
                       <h1>
@@ -285,19 +296,21 @@ class Home extends Component {
                   <Spring
                     from={{ opacity: 0 }}
                     to={{ opacity: 1 }}
-                    config={{ delay: 500 }}>
+                    config={{ delay: 500 }}
+                  >
                     {props => (
                       <div style={props}>
                         <h2>Family Law</h2>
                         <p>
                           We work to guide your family through this process.
                         </p>
-                        <Link href="family-law">
+                        <Link href='family-law'>
                           <a>
                             <Button
-                              textColor="#085c8e"
-                              marginTop="20px"
-                              element={'a'}>
+                              textColor='#085c8e'
+                              marginTop='20px'
+                              element={'a'}
+                            >
                               Learn More
                             </Button>
                           </a>
@@ -312,7 +325,8 @@ class Home extends Component {
                   <Spring
                     from={{ opacity: 0 }}
                     to={{ opacity: 1 }}
-                    config={{ delay: 500 }}>
+                    config={{ delay: 500 }}
+                  >
                     {props => (
                       <div style={props}>
                         <h2>LGBTQ Law</h2>
@@ -320,12 +334,13 @@ class Home extends Component {
                           We recognize the specific legal concerns of the LGBTQ
                           community.
                         </p>
-                        <Link href="/lgbtq-law">
+                        <Link href='/lgbtq-law'>
                           <a>
                             <Button
-                              textColor="#085c8e"
-                              marginTop="20px"
-                              element={'a'}>
+                              textColor='#085c8e'
+                              marginTop='20px'
+                              element={'a'}
+                            >
                               Learn More
                             </Button>
                           </a>
@@ -368,13 +383,14 @@ class Home extends Component {
                 family.
               </p>
               <p>
-                <Link href="/family-law">
+                <Link href='/family-law'>
                   <a
                     style={{
                       color: MedBlue,
                       textDecoration: 'none',
                       fontWeight: 700,
-                    }}>
+                    }}
+                  >
                     Family law
                   </a>
                 </Link>{' '}
@@ -387,13 +403,14 @@ class Home extends Component {
               </p>
               <p>
                 We invite you to{' '}
-                <Link href="/contact">
+                <Link href='/contact'>
                   <a
                     style={{
                       color: MedBlue,
                       textDecoration: 'none',
                       fontWeight: 700,
-                    }}>
+                    }}
+                  >
                     contact
                   </a>
                 </Link>{' '}
@@ -416,8 +433,9 @@ class Home extends Component {
                   justifyContent: 'center',
                   paddingTop: '50px',
                   paddingBottom: '50px',
-                }}>
-                <Link href="/attorneys">
+                }}
+              >
+                <Link href='/attorneys'>
                   <a>
                     <Button textColor={Blue}>Meet Our Attorneys</Button>
                   </a>
