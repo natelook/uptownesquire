@@ -2,11 +2,9 @@ import React from 'react';
 import App, { Container } from 'next/app';
 import NProgress from 'nprogress';
 import Router from 'next/router';
-import { Transition } from 'react-spring';
 import Layout from '../components/Layout';
 
 Router.events.on('routeChangeStart', url => {
-  console.log(`Loading: ${url}`);
   NProgress.start();
 });
 

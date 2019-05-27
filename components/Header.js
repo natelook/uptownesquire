@@ -181,7 +181,6 @@ class Header extends Component {
   openNav = () => {
     const { open } = this.state;
     open ? this.setState({ open: false }) : this.setState({ open: true });
-    console.log('Hello');
   };
 
   openPhoneNumber = () => {
@@ -215,45 +214,45 @@ class Header extends Component {
           {props => (
             <Nav scroll={scrolled} home={this.props.page} style={props}>
               <ImageContainer scroll={scrolled} home={this.props.page}>
-                <Link href="/">
+                <Link href='/'>
                   <a>
                     <img
                       src={
                         scrolled || this.props.page != '/' ? logo : whiteLogo
                       }
-                      alt="Jamie Duggan Law Firm Logo"
+                      alt='Jamie Duggan Law Firm Logo'
                     />
                   </a>
                 </Link>
               </ImageContainer>
               <NavList>
                 <NavItem onClick={this.openNav}>
-                  <Link href="/">
+                  <Link href='/'>
                     <a>Home</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href="/attorneys">
+                  <Link href='/attorneys'>
                     <a>Attorneys & Staff</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href="/family-law">
+                  <Link href='/family-law'>
                     <a>Family Law</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href="/lgbtq-law">
+                  <Link href='/lgbtq-law'>
                     <a>LGBTQ Law</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href="/blog">
+                  <Link href='/blog'>
                     <a>Blog</a>
                   </Link>
                 </NavItem>
                 <NavItem>
-                  <Link href="/contact">
+                  <Link href='/contact'>
                     <a>Contact</a>
                   </Link>
                 </NavItem>
@@ -272,7 +271,7 @@ class Header extends Component {
                   </PhoneNumber>
                 </NavItem>
                 <NavItem>
-                  <a href="mailto:info@uptownesquire.com">
+                  <a href='mailto:info@uptownesquire.com'>
                     <img
                       style={{ height: '25px', width: '25px' }}
                       src={
@@ -287,7 +286,8 @@ class Header extends Component {
               <Burger
                 onClick={this.openNav}
                 scrolled={scrolled}
-                home={this.props.page}>
+                home={this.props.page}
+              >
                 <Patty scrolled={scrolled} home={this.props.page} open={open} />
                 <Patty scrolled={scrolled} home={this.props.page} open={open} />
                 <Patty scrolled={scrolled} home={this.props.page} open={open} />

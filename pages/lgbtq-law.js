@@ -88,6 +88,11 @@ const Bio = styled.div`
 
 const OpenPractice = styled.div`
   padding-left: 50px;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
+
   @media (max-width: 414px) {
     padding: 0 20px;
     grid-column-start: 1;
@@ -108,7 +113,7 @@ const PracticeList = styled.div`
   }
 
   @media (max-width: 768px) {
-    padding: 0 5px;
+    padding: 0 20px 0 5px;
   }
 
   @media (max-width: 414px) {
