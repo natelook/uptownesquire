@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Spring } from 'react-spring';
-import Div100vh from 'react-div-100vh';
 import { Container } from '../components/styles/Tools';
 import { LightBlue, Blue, MedBlue } from '../components/styles/Colors';
 import Button from '../components/Button';
@@ -25,14 +24,10 @@ const circleHandsLighter = '/static/images/circle_hands_lighter.jpg';
 const HomeContainer = styled.div`
   position: relative;
   height: 100vh;
-
-  @media (max-width: 812px) and (max-height: 375px) {
-    height: 200vh;
-  }
 `;
 
 const Heading = styled.div`
-  height: 60%;
+  height: 60vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -48,7 +43,7 @@ const Heading = styled.div`
   font-family: 'Assistant';
 
   @media (max-width: 768px) {
-    height: 50vh;
+    height: 40vh;
   }
 
   h1 {
@@ -65,10 +60,14 @@ const Heading = styled.div`
     @media (max-width: 414px) {
       font-size: 18px;
     }
+    /* iPhone 5 */
+    @media (max-width: 320px) {
+      font-size: 16px;
+    }
   }
-  @media (max-width: 414px) and (max-height: 736px) {
+  /* @media (max-width: 414px) and (max-height: 736px) {
     height: 368px;
-  }
+  } */
 `;
 
 const Overlay = styled.div`
@@ -82,7 +81,7 @@ const Overlay = styled.div`
 `;
 
 const Grid = styled.div`
-  height: 40%;
+  height: 40vh;
   display: grid;
   bottom: 0;
   grid-template-columns: 50% 50%;
@@ -97,12 +96,12 @@ const Grid = styled.div`
   }
 
   @media (max-width: 768px) {
-    height: 50vh;
+    height: 60vh;
   }
 
-  @media (max-width: 414px) and (max-height: 736px) {
+  /* @media (max-width: 414px) and (max-height: 736px) {
     height: 368px;
-  }
+  } */
 `;
 
 const Practice = styled.div`
@@ -123,8 +122,12 @@ const Practice = styled.div`
   @media (max-width: 1024px) {
     padding: 20px;
   }
-  @media (max-width: 414px) and (max-height: 736px) {
+  /* @media (max-width: 414px) and (max-height: 736px) {
     height: 144px;
+  } */
+
+  @media (max-width: 414px) {
+    padding: 10px;
   }
 
   h2 {
@@ -165,7 +168,7 @@ const Practice = styled.div`
     }
 
     @media (max-width: 414px) {
-      font-size: 18px;
+      font-size: 15px;
     }
   }
 
@@ -268,91 +271,87 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Div100vh>
-          <HomeContainer>
-            <Heading>
-              <Container>
+        <HomeContainer>
+          <Heading>
+            <Container>
+              <Spring
+                from={{ opacity: 0, marginLeft: -200 }}
+                to={{ opacity: 1, marginLeft: 0 }}
+                config={{ duration: 500, delay: 0 }}
+              >
+                {props => (
+                  <div style={props}>
+                    <h1>
+                      One block at a time, we build a{' '}
+                      <span style={{ color: LightBlue }}>legal strategy</span>
+                      <br /> rooted in protecting you and your family.
+                    </h1>
+                  </div>
+                )}
+              </Spring>
+              <Overlay />
+            </Container>
+          </Heading>
+          <Grid>
+            <Practice image={redHeartLighter}>
+              <div style={{ zIndex: 20 }}>
                 <Spring
-                  from={{ opacity: 0, marginLeft: -200 }}
-                  to={{ opacity: 1, marginLeft: 0 }}
-                  config={{ duration: 500, delay: 0 }}
+                  from={{ opacity: 0 }}
+                  to={{ opacity: 1 }}
+                  config={{ delay: 500 }}
                 >
                   {props => (
                     <div style={props}>
-                      <h1>
-                        One block at a time, we build a{' '}
-                        <span style={{ color: LightBlue }}>legal strategy</span>
-                        <br /> rooted in protecting you and your family.
-                      </h1>
+                      <h2>Family Law</h2>
+                      <p>We work to guide your family through this process.</p>
+                      <Link href='family-law'>
+                        <a>
+                          <Button
+                            textColor='#085c8e'
+                            marginTop='20px'
+                            element={'a'}
+                          >
+                            Learn More
+                          </Button>
+                        </a>
+                      </Link>
                     </div>
                   )}
                 </Spring>
-                <Overlay />
-              </Container>
-            </Heading>
-            <Grid>
-              <Practice image={redHeartLighter}>
-                <div style={{ zIndex: 20 }}>
-                  <Spring
-                    from={{ opacity: 0 }}
-                    to={{ opacity: 1 }}
-                    config={{ delay: 500 }}
-                  >
-                    {props => (
-                      <div style={props}>
-                        <h2>Family Law</h2>
-                        <p>
-                          We work to guide your family through this process.
-                        </p>
-                        <Link href='family-law'>
-                          <a>
-                            <Button
-                              textColor='#085c8e'
-                              marginTop='20px'
-                              element={'a'}
-                            >
-                              Learn More
-                            </Button>
-                          </a>
-                        </Link>
-                      </div>
-                    )}
-                  </Spring>
-                </div>
-              </Practice>
-              <Practice image={circleHandsLighter}>
-                <div style={{ zIndex: 20 }}>
-                  <Spring
-                    from={{ opacity: 0 }}
-                    to={{ opacity: 1 }}
-                    config={{ delay: 500 }}
-                  >
-                    {props => (
-                      <div style={props}>
-                        <h2>LGBTQ Law</h2>
-                        <p>
-                          We recognize the specific legal concerns of the LGBTQ
-                          community.
-                        </p>
-                        <Link href='/lgbtq-law'>
-                          <a>
-                            <Button
-                              textColor='#085c8e'
-                              marginTop='20px'
-                              element={'a'}
-                            >
-                              Learn More
-                            </Button>
-                          </a>
-                        </Link>
-                      </div>
-                    )}
-                  </Spring>
-                </div>
-              </Practice>
-            </Grid>
-          </HomeContainer>
-        </Div100vh>
+              </div>
+            </Practice>
+            <Practice image={circleHandsLighter}>
+              <div style={{ zIndex: 20 }}>
+                <Spring
+                  from={{ opacity: 0 }}
+                  to={{ opacity: 1 }}
+                  config={{ delay: 500 }}
+                >
+                  {props => (
+                    <div style={props}>
+                      <h2>LGBTQ Law</h2>
+                      <p>
+                        We recognize the specific legal concerns of the LGBTQ
+                        community.
+                      </p>
+                      <Link href='/lgbtq-law'>
+                        <a>
+                          <Button
+                            textColor='#085c8e'
+                            marginTop='20px'
+                            element={'a'}
+                          >
+                            Learn More
+                          </Button>
+                        </a>
+                      </Link>
+                    </div>
+                  )}
+                </Spring>
+              </div>
+            </Practice>
+          </Grid>
+        </HomeContainer>
         <AboutContainer>
           <Container>
             <AboutBackground>

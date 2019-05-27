@@ -16,6 +16,7 @@ const Btn = styled.button`
   @media (max-width: 414px) {
     font-size: 14px;
     margin-top: 10px;
+    border: 2px solid ${props => props.theme.blue};
   }
 `;
 
