@@ -60,6 +60,10 @@ const Heading = styled.div`
     text-align: center;
     font-size: 50px;
   }
+
+  @media (max-width: 414px) {
+    height: 150px;
+  }
 `;
 
 const HeadingOverlay = styled.div`

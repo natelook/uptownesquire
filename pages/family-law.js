@@ -50,7 +50,6 @@ const Heading = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
   z-index: 1;
   display: flex;
   align-items: center;
@@ -61,6 +60,9 @@ const Heading = styled.div`
     z-index: 3;
     text-align: center;
     font-size: 50px;
+  }
+  @media (max-width: 414px) {
+    height: 150px;
   }
 `;
 
@@ -176,7 +178,7 @@ class FamilyLaw extends Component {
         <Container>
           <ContainerBackground>
             <Grid>
-              <Heading id="area-title">
+              <Heading id='area-title'>
                 <h1>Family Law</h1>
                 <HeadingOverlay />
               </Heading>
@@ -184,7 +186,7 @@ class FamilyLaw extends Component {
                 <h2>{title}</h2>
                 <div dangerouslySetInnerHTML={{ __html: selectedPractice }} />
                 <ContactLink>
-                  <Link href="/contact">
+                  <Link href='/contact'>
                     <a>Contact us about {title.toLowerCase()}.</a>
                   </Link>
                 </ContactLink>
@@ -195,33 +197,38 @@ class FamilyLaw extends Component {
                   <ul>
                     <PracticeItem
                       onClick={() => this.selectPractice(Divorce, 'Divorce')}
-                      selected={this.state.title == 'Divorce'}>
+                      selected={this.state.title == 'Divorce'}
+                    >
                       Divorce
                     </PracticeItem>
                     <PracticeItem
                       onClick={() =>
                         this.selectPractice(ChildCustody, 'Child Custody')
                       }
-                      selected={this.state.title == 'Child Custody'}>
+                      selected={this.state.title == 'Child Custody'}
+                    >
                       Child Custody
                     </PracticeItem>
                     <PracticeItem
                       onClick={() => this.selectPractice(Adoption, 'Adoption')}
-                      selected={this.state.title == 'Adoption'}>
+                      selected={this.state.title == 'Adoption'}
+                    >
                       Adoption
                     </PracticeItem>
                     <PracticeItem
                       onClick={() =>
                         this.selectPractice(ChildSupport, 'Child Support')
                       }
-                      selected={this.state.title == 'Child Support'}>
+                      selected={this.state.title == 'Child Support'}
+                    >
                       Child Support
                     </PracticeItem>
                     <PracticeItem
                       onClick={() =>
                         this.selectPractice(Enforcement, 'Enforcement')
                       }
-                      selected={this.state.title == 'Enforcement'}>
+                      selected={this.state.title == 'Enforcement'}
+                    >
                       Enforcement
                     </PracticeItem>
                     <PracticeItem
@@ -234,7 +241,8 @@ class FamilyLaw extends Component {
                       selected={
                         this.state.title ==
                         'Pre-Marital & Post Marital Agreements'
-                      }>
+                      }
+                    >
                       Pre-Marital & Post-Marital Agreements
                     </PracticeItem>
                   </ul>
