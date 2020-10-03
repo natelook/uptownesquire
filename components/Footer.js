@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Container } from './styles/Tools';
 
 const FooterContainer = styled.div`
-  background-color: ${props => props.theme.dark};
+  background-color: ${(props) => props.theme.dark};
   color: #999;
   position: relative;
 `;
@@ -42,7 +42,7 @@ const List = styled.div`
     text-decoration: none;
 
     &:hover {
-      color: ${props => props.theme.medBlue};
+      color: ${(props) => props.theme.medBlue};
     }
   }
 
@@ -100,17 +100,17 @@ class Footer extends Component {
                 <ListyList>
                   <ul>
                     <li>
-                      <Link href='/'>
+                      <Link href="/">
                         <a>Home</a>
                       </Link>
                     </li>
                     <li>
-                      <Link href='/disclaimer'>
+                      <Link href="/disclaimer">
                         <a>Disclaimer</a>
                       </Link>
                     </li>
                     <li>
-                      <a href='https://secure.lawpay.com/pages/dnlawpc/operating'>
+                      <a href="https://secure.lawpay.com/pages/dnlawpc/operating">
                         Make a Payment
                       </a>
                     </li>
@@ -125,27 +125,10 @@ class Footer extends Component {
                   <ul>
                     <li>
                       <Link
-                        as='/attorney/jaime-s-duggan'
-                        href='/attorney?slug=jaime-s-duggan'
+                        as="/attorney/jaime-s-duggan"
+                        href="/attorney?slug=jaime-s-duggan"
                       >
                         <a>Jaime S. Duggan</a>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        as='/attorney/kourtney-l-parker'
-                        href='/attorney?slug=kourtney-l-parker'
-                      >
-                        <a>Kourtney L. Parker</a>
-                      </Link>
-                    </li>
-
-                    <li>
-                      <Link
-                        as='/attorney/olivia-lindsey'
-                        href='/attorney?slug=olivia-lindsey'
-                      >
-                        <a>Olivia Lindsey</a>
                       </Link>
                     </li>
                   </ul>
@@ -158,12 +141,12 @@ class Footer extends Component {
                 <ListyList>
                   <ul>
                     <li>
-                      <Link href='/family-law'>
+                      <Link href="/family-law">
                         <a>Family Law</a>
                       </Link>
                     </li>
                     <li>
-                      <Link href='/lgbtq-law'>
+                      <Link href="/lgbtq-law">
                         <a>LGBTQ Law</a>
                       </Link>
                     </li>
@@ -177,12 +160,12 @@ class Footer extends Component {
                 <ListyList>
                   <ul>
                     <li>
-                      <Link href='/contact'>
+                      <Link href="/contact">
                         <a>Contact</a>
                       </Link>
                     </li>
                     <li>
-                      <Link href='/blog'>
+                      <Link href="/blog">
                         <a>Blog</a>
                       </Link>
                     </li>
@@ -196,8 +179,8 @@ class Footer extends Component {
               <List>
                 <ul>
                   <li>
-                    3626 N. Hall Street, Ste 820
-                    <br /> Dallas, Texas 75219
+                    7920 Belt Line Road, Suite 700,
+                    <br /> Dallas, Texas 75254
                   </li>
                   <li>
                     <Bold>Phone: </Bold>214-494-1647
@@ -207,7 +190,7 @@ class Footer extends Component {
                   </li>
                   <li>
                     <Bold>Email: </Bold>
-                    <a href='mailto:info@uptownesquire.com'>
+                    <a href="mailto:info@uptownesquire.com">
                       info@uptownesquire.com
                     </a>
                   </li>
